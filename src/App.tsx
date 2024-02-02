@@ -1,36 +1,43 @@
-import React from "react";
-import logo from "./logo.svg";
-import styled, { ThemeProvider, useTheme } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { createTheme } from "@mui/material";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import Layout from "./components/Layout";
+import Accomodations from "./pages/Accomodations";
+import Home from "./pages/Home";
+import RSVP from "./pages/RSVP";
 
 function App() {
-
   const theme = createTheme({
-
-  })
-
-  const Test = styled("div")(({theme}) => ({
-    backgroundColor: theme.palette.primary.main,
-  }))
+    typography: {
+      fontFamily: [
+        'DM Serif Display',
+        'Lato',
+      ].join(",")
+    },
+  });
 
   return (
     <ThemeProvider theme={theme}>
-      <Test className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </Test>
+      <main>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="accomodations" element={<Accomodations />} />
+              <Route path="rsvp" element={<RSVP />} />
+
+              {/* Redirect to home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </Router>
+      </main>
     </ThemeProvider>
   );
 }
