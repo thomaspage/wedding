@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/wedding/static/css/main.abc34d11.css",
-    "main.js": "/wedding/static/js/main.8d09b3a7.js",
-    "static/media/PPHatton-Bold.woff": "/wedding/static/media/PPHatton-Bold.84d28a71dd200536160c.woff",
-    "static/media/PPHatton-Medium.woff": "/wedding/static/media/PPHatton-Medium.4e69b7e676ef0b973548.woff",
-    "static/media/PPHatton-BoldItalic.woff": "/wedding/static/media/PPHatton-BoldItalic.bb274c3200b38521e211.woff",
-    "static/media/PPHatton-MediumItalic.woff": "/wedding/static/media/PPHatton-MediumItalic.d9bb2a984d1495f428d7.woff",
-    "static/media/PPHatton-Ultralight.woff": "/wedding/static/media/PPHatton-Ultralight.45dcef934b1dc4f33163.woff",
-    "static/media/PPHatton-UltralightItalic.woff": "/wedding/static/media/PPHatton-UltralightItalic.bfdbaabd3e525a13a17d.woff",
-    "static/media/ballantines.woff": "/wedding/static/media/ballantines.01bc5e8f03195996622c.woff",
-    "index.html": "/wedding/index.html",
-    "main.abc34d11.css.map": "/wedding/static/css/main.abc34d11.css.map",
-    "main.8d09b3a7.js.map": "/wedding/static/js/main.8d09b3a7.js.map"
+    "main.css": "/static/css/main.41ae8c5b.css",
+    "main.js": "/static/js/main.04c06520.js",
+    "static/media/PPHatton-Bold.woff": "/static/media/PPHatton-Bold.84d28a71dd200536160c.woff",
+    "static/media/PPHatton-Medium.woff": "/static/media/PPHatton-Medium.4e69b7e676ef0b973548.woff",
+    "static/media/PPHatton-BoldItalic.woff": "/static/media/PPHatton-BoldItalic.bb274c3200b38521e211.woff",
+    "static/media/PPHatton-MediumItalic.woff": "/static/media/PPHatton-MediumItalic.d9bb2a984d1495f428d7.woff",
+    "static/media/PPHatton-Ultralight.woff": "/static/media/PPHatton-Ultralight.45dcef934b1dc4f33163.woff",
+    "static/media/PPHatton-UltralightItalic.woff": "/static/media/PPHatton-UltralightItalic.bfdbaabd3e525a13a17d.woff",
+    "static/media/ballantines.woff": "/static/media/ballantines.01bc5e8f03195996622c.woff",
+    "index.html": "/index.html",
+    "main.41ae8c5b.css.map": "/static/css/main.41ae8c5b.css.map",
+    "main.04c06520.js.map": "/static/js/main.04c06520.js.map"
   },
   "entrypoints": [
-    "static/css/main.abc34d11.css",
-    "static/js/main.8d09b3a7.js"
+    "static/css/main.41ae8c5b.css",
+    "static/js/main.04c06520.js"
   ]
 }
