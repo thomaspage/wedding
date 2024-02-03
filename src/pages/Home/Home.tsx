@@ -1,46 +1,41 @@
-import { Img } from "./Home.styles"
+import { Typography } from "@mui/material";
+import {
+  ScheduleContainer,
+  HomeContainer,
+  Img,
+  Place,
+  Time,
+} from "./Home.styles";
 
-const Home = ({
+const Home = ({}) => {
+  return (
+    <HomeContainer>
+      <Typography variant="h1" fontSize="4rem">
+        Max & Tom
+        <br />
+        joyfully invite you
+        <br />
+        to their wedding
+        <br />
+        celebration.
+      </Typography>
 
-}) => {
-    return (
-        <div>
-            <Img src={`${process.env.PUBLIC_URL}/img/max_tom.png`} />
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-        </div>
-    )
-}
+      <ScheduleContainer>
+        <Time>
+          <Typography variant="h3">On Sunday,</Typography>
+          <Typography variant="h3">September 1, 2024</Typography>
+          <Typography variant="h3">5 oclock in the afternoon.</Typography>
+        </Time>
+        <Place>
+          <Typography variant="h3">Jatoba</Typography>
+          <Typography variant="h3">1184 Rue du Square-Phillips</Typography>
+          <Typography variant="h3">Montréal.</Typography>
+        </Place>
+      </ScheduleContainer>
 
-export default Home
+      <Typography fontFamily="Ballantines" variant="h4">Dinner & dancing to follow</Typography>
+    </HomeContainer>
+  );
+};
+
+export default Home;

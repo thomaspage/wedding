@@ -3,9 +3,7 @@ import { ContentTypes } from "./Content.types";
 
 const Content = ({children}: ContentTypes) => {
   return (
-    <ContentContainer>
-      {children}
-    </ContentContainer>
+    <ContentContainer children={children} />
   );
 };
 
