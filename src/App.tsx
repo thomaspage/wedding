@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import { createTheme } from "@mui/material";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Outlet,
