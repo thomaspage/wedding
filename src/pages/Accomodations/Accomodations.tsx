@@ -9,16 +9,20 @@ import {
   WalkerImg,
 } from "./Accomodations.styles";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Accomodations = ({}) => {
+
+  const { t } = useTranslation();
+
   return (
     <AccomodationsContainer>
-      <Typography>We have not reserved a block of rooms, so feel free to stay wherever you'd like! Whether you find a killer AirBnb in Le Plateau or a beautiful hotel in Vieux-Montréal, the venue is a short 5 minute walk from the McGill metro station on the green line. If you would rather stay close to the venue, some nearby hotel options can be found below.</Typography>
+      <Typography>{t("pages.accomodations.message")}</Typography>
 
       <Hotels>
       <Hotel>
         <Link to="https://hotelbirksmontreal.com/" target="blank">
-          <HotelName>Hotel Birks</HotelName>
+          <HotelName>Hôtel Birks</HotelName>
         </Link>
         <InlineFlex>
           <WalkerImg />

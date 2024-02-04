@@ -5,34 +5,38 @@ import {
   Place,
   Time,
 } from "./Home.styles";
+import { useTranslation } from "react-i18next";
 
 const Home = ({}) => {
+
+  const { t } = useTranslation();
+  
   return (
     <HomeContainer>
       <Typography variant="h1" fontSize="4rem">
-        Max & Tom
+        {t("pages.home.title.1")}
         <br />
-        joyfully invite you
+        {t("pages.home.title.2")}
         <br />
-        to their wedding
+        {t("pages.home.title.3")}
         <br />
-        celebration.
+        {t("pages.home.title.4")}
       </Typography>
 
       <ScheduleContainer>
         <Time>
-          <Typography variant="h3">On Sunday,</Typography>
-          <Typography variant="h3">September 1, 2024</Typography>
-          <Typography variant="h3">5 o'clock in the afternoon.</Typography>
+          <Typography variant="h3">{t("pages.home.day")}</Typography>
+          <Typography variant="h3">{t("pages.home.date")}</Typography>
+          <Typography variant="h3">{t("pages.home.time")}</Typography>
         </Time>
         <Place>
-          <Typography variant="h3">Jatoba</Typography>
-          <Typography variant="h3">1184 Rue du Square-Phillips</Typography>
-          <Typography variant="h3">Montréal.</Typography>
+          <Typography variant="h3">{t("pages.home.place")}</Typography>
+          <Typography variant="h3">{t("pages.home.address")}</Typography>
+          <Typography variant="h3">{t("pages.home.city")}</Typography>
         </Place>
       </ScheduleContainer>
 
-      <Typography fontFamily="Ballantines" variant="h4">Dinner & dancing to follow</Typography>
+      <Typography fontFamily="Ballantines" variant="h4">{t("pages.home.dancing")}</Typography>
     </HomeContainer>
   );
 };

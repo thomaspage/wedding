@@ -1,0 +1,50 @@
+{
+    "translation": {
+        "pages": {
+            "home": {
+                "path": "Home",
+                "title.1": "Max & Tom",
+                "title.2": "joyfully invite you",
+                "title.3": "to their wedding",
+                "title.4": "celebration.",
+                "day": "On Sunday,",
+                "date": "September 1, 2024",
+                "time": "5 o'clock in the afternoon.",
+                "place": "Jatoba",
+                "address": "1184 Rue du Square-Phillips",
+                "city": "Montréal",
+                "dancing": "Dinner & dancing to follow"
+            },
+            "schedule": {
+                "path": "Schedule",
+                "ceremony": "Ceremony",
+                "cocktail": "Cocktail",
+                "dinner": "Dinner",
+                "dancing": "Dancing",
+                "5pm": "5:00pm",
+                "6pm": "6:00pm",
+                "7pm": "7:00pm",
+                "10pm": "10:00pm"
+            },
+            "accomodations": {
+                "path": "Accomodations",
+                "message": "We have not reserved a block of rooms, so feel free to stay wherever you'd like! Whether you find a killer AirBnb in Le Plateau or a beautiful hotel in Vieux-Montréal, the venue is a short 5 minute walk from the McGill metro station on the green line. If you would rather stay close to the venue, some nearby hotel options can be found below."
+            },
+            "rsvp": {
+                "path": "RSVP",
+                "guest": "Guest",
+                "guest1": "Guest One",
+                "guest2": "Guest Two",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "dietaryRestrictions": "Dietary Restrictions",
+                "justMe": "It's just me",
+                "wellBeThere": "We'll be there",
+                "illBeThere": "I'll be there",
+                "notAttending": "Can't make it",
+                "submit": "Submit",
+                "infants": "While this is an 18+ event, we are able to accomodate nursing infants. Please let us know as soon as possible so that the proper arrangements can be made."
+            }
+        }
+    }
+}

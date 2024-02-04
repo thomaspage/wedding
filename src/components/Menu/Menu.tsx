@@ -9,16 +9,19 @@ import {
   MenuContainer,
 } from "./Menu.styles";
 import { Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Menu = ({}) => {
   const [open, setOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const location = useLocation();
 
   const routes = [
     {
       pathname: "/",
-      label: "Home",
+      label: t("pages.home.path"),
       hearts: {
         version: 2,
         $height: 25,
@@ -28,7 +31,7 @@ const Menu = ({}) => {
     },
     {
       pathname: "/schedule",
-      label: "Schedule",
+      label: t("pages.schedule.path"),
       hearts: {
         version: 1,
         $height: 22,
@@ -38,7 +41,7 @@ const Menu = ({}) => {
     },    
     {
       pathname: "/accomodations",
-      label: "Accomodations",
+      label: t("pages.accomodations.path"),
       hearts: {
         version: 4,
         $height: 14,
@@ -48,7 +51,7 @@ const Menu = ({}) => {
     },
     {
       pathname: "/rsvp",
-      label: "RSVP",
+      label: t("pages.rsvp.path"),
       hearts: {
         version: 3,
         $height: 14,

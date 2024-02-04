@@ -2,6 +2,7 @@ import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 import { LayoutContainer, Title } from "./Layout.styles";
 import Menu from "../Menu";
 import Content from "../Content";
+import LanguageSelector from "../LanguageSelector";
 
 const Layout = ({}) => {
 
@@ -15,17 +16,19 @@ const Layout = ({}) => {
   return (
     <LayoutContainer>
       {/* Menu */}
-      <Menu></Menu>
+      <Menu />
 
       {/* Content */}
-      {/* <div> */}
       <Content>
         <>
           <Title sx={{textAlign: title === "Schedule" ? "center": ""}}>{title}</Title>
           <Outlet />
         </>
       </Content>
-      {/* </div> */}
+
+      {/* Lanugage Selector */}
+      <LanguageSelector />
+
     </LayoutContainer>
   );
 };

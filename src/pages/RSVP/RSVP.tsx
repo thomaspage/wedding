@@ -19,6 +19,7 @@ import {
   RSVPResponse,
   StyledRadioGroup,
 } from "./RSVP.styles";
+import { useTranslation } from "react-i18next";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz8iseBD1icEud31klYkjPCXTNImOoPHQorT6KkNdhL5Cbfuc50zEx59OAQYSrH-o3Elw/exec";
@@ -36,6 +37,9 @@ const emptyGuest: Guest = {
 };
 
 const RSVP = ({}) => {
+
+  const { t } = useTranslation();
+
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     // Prevent page reload
     event.preventDefault();
@@ -104,13 +108,13 @@ const RSVP = ({}) => {
           <GuestsContainer>
             <GuestGroup>
               <Typography fontWeight={500}>
-                Guest {bringingGuest && "One"}
+                {bringingGuest ? t("pages.rsvp.guest1") : t("pages.rsvp.guest")}
               </Typography>
               <TextField
                 type="text"
                 variant="standard"
                 color="primary"
-                label="First Name"
+                label={t("pages.rsvp.firstName")}
                 onChange={(e) =>
                   setPrimaryGuest({
                     ...primaryGuest,
@@ -126,7 +130,7 @@ const RSVP = ({}) => {
                 type="text"
                 variant="standard"
                 color="primary"
-                label="Last Name"
+                label={t("pages.rsvp.lastName")}
                 onChange={(e) =>
                   setPrimaryGuest({ ...primaryGuest, lastName: e.target.value })
                 }
@@ -139,7 +143,7 @@ const RSVP = ({}) => {
                 type="text"
                 variant="standard"
                 color="primary"
-                label="Dietary Restrictions"
+                label={t("pages.rsvp.dietaryRestrictions")}
                 onChange={(e) =>
                   setPrimaryGuest({
                     ...primaryGuest,
@@ -153,13 +157,13 @@ const RSVP = ({}) => {
 
             {bringingGuest && (
               <GuestGroup>
-                <Typography fontWeight={500}>Guest Two</Typography>
+                <Typography fontWeight={500}>{t("pages.rsvp.guest2")}</Typography>
 
                 <TextField
                   type="text"
                   variant="standard"
                   color="primary"
-                  label="First Name"
+                  label={t("pages.rsvp.firstName")}
                   onChange={(e) =>
                     setSecondaryGuest({
                       ...secondaryGuest,
@@ -175,7 +179,7 @@ const RSVP = ({}) => {
                   type="text"
                   variant="standard"
                   color="primary"
-                  label="Last Name"
+                  label={t("pages.rsvp.lastName")}
                   onChange={(e) =>
                     setSecondaryGuest({
                       ...secondaryGuest,
@@ -191,7 +195,7 @@ const RSVP = ({}) => {
                   type="text"
                   variant="standard"
                   color="primary"
-                  label="Dietary Restrictions"
+                  label={t("pages.rsvp.dietaryRestrictions")}
                   onChange={(e) =>
                     setSecondaryGuest({
                       ...secondaryGuest,
@@ -220,7 +224,7 @@ const RSVP = ({}) => {
                   }}
                 />
               }
-              label="It's just me"
+              label={t("pages.rsvp.justMe")}
             />
           </FormGroup>
 
@@ -231,14 +235,14 @@ const RSVP = ({}) => {
             <FormControlLabel
               value={true}
               control={<Radio />}
-              label={bringingGuest ? "We'll be there" : "I'll be there"}
+              label={bringingGuest ? t("pages.rsvp.wellBeThere") : t("pages.rsvp.illBeThere")}
               sx={{ flexBasis: 20, flexGrow: 1 }}
             />
             <div style={{ flexBasis: 20, flexGrow: 2 }}>
               <FormControlLabel
                 value={false}
                 control={<Radio />}
-                label="Can't make it"
+                label={t("pages.rsvp.notAttending")}
               />
               {!attending && <span>😭</span>}
             </div>
@@ -260,14 +264,14 @@ const RSVP = ({}) => {
               color="primary"
               type="submit"
             >
-              Submit
+              {t("pages.rsvp.submit")}
             </Button>
           </div>
 
         </FormControl>
       </form>
 
-      <Typography sx={{maxWidth: 450, textAlign: "right", marginLeft: 'auto'}} fontSize="0.8em">While this is an 18+ event, we are able to accomodate nursing infants. Please let us know as soon as possible so that the proper arrangements can be made.</Typography>
+      <Typography sx={{maxWidth: 450, textAlign: "right", marginLeft: 'auto'}} fontSize="0.8em">{t("pages.rsvp.infants")}</Typography>
 
     </RSVPContainer>
   );

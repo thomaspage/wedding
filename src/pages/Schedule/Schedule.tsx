@@ -13,8 +13,12 @@ import {
 } from "@mui/lab";
 import { Typography } from "@mui/material";
 import { ScheduleContainer } from "./Schedule.styles";
+import { useTranslation } from "react-i18next";
 
 const Schedule = ({}) => {
+
+  const { t } = useTranslation();
+
   return (
     <ScheduleContainer>
       {/* <Typography>Below you will find a rough timeline of the day. We have organized complimentary valet parking for all guests of the wedding.</Typography> */}
@@ -41,34 +45,34 @@ const Schedule = ({}) => {
           </TimelineContent>
         </TimelineItem> */}
         <TimelineItem>
-          <TimelineOppositeContent>5:00pm</TimelineOppositeContent>
+          <TimelineOppositeContent>{t("pages.schedule.5pm")}</TimelineOppositeContent>
           <TimelineSeparator sx={{ height: 100 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>Ceremony</TimelineContent>
+          <TimelineContent>{t("pages.schedule.ceremony")}</TimelineContent>
         </TimelineItem>
         <TimelineItem>
-          <TimelineOppositeContent>6:00pm</TimelineOppositeContent>
+        <TimelineOppositeContent>{t("pages.schedule.6pm")}</TimelineOppositeContent>
           <TimelineSeparator sx={{ height: 100 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>Cocktail hour</TimelineContent>
+          <TimelineContent>{t("pages.schedule.cocktail")}</TimelineContent>
         </TimelineItem>
 
         <TimelineItem>
-          <TimelineOppositeContent>7:00pm</TimelineOppositeContent>
+        <TimelineOppositeContent>{t("pages.schedule.7pm")}</TimelineOppositeContent>
           <TimelineSeparator sx={{ height: 300 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>Dinner</TimelineContent>
+          <TimelineContent>{t("pages.schedule.dinner")}</TimelineContent>
         </TimelineItem>
 
         {/* Dancing */}
         <TimelineItem>
-          <TimelineOppositeContent>10:00pm</TimelineOppositeContent>
+        <TimelineOppositeContent>{t("pages.schedule.10pm")}</TimelineOppositeContent>
           <TimelineSeparator sx={{ height: 400 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
@@ -80,7 +84,7 @@ const Schedule = ({}) => {
               }}
             ></div>
           </TimelineSeparator>
-          <TimelineContent>Dancing</TimelineContent>
+          <TimelineContent>{t("pages.schedule.dancing")}</TimelineContent>
         </TimelineItem>
       </Timeline>
     </ScheduleContainer>

@@ -12,9 +12,22 @@ import Accomodations from "./pages/Accomodations";
 import Home from "./pages/Home";
 import RSVP from "./pages/RSVP";
 import Schedule from "./pages/Schedule";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 
 function App() {
+
+  const {i18n} = useTranslation();
+
+  const [language, setLanguage] = useState(i18n.language)
+
+  useEffect(() => {
+    i18n.on('languageChanged', (lng) => {
+      setLanguage(lng)
+    })
+  }, [])
+
   const theme = createTheme({
     typography: {
       h1: {
