@@ -45,7 +45,7 @@ const Menu = ({}) => {
       hearts: {
         version: 4,
         $height: 14,
-        $top: -5,
+        $top: -3,
         $right: 0,
       },
     },
