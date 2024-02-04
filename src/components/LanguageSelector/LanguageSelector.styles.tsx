@@ -20,7 +20,7 @@ export const LanguageSelectorContainer = styled("div")(({ theme }) => ({
 
 export const Hamburger = styled(Button)(({ theme }) => ({
   pointerEvents: "auto",
-  zIndex: 1,
+  // zIndex: 1,
 
   // [theme.breakpoints.up("md")]: {
   //   display: "none",

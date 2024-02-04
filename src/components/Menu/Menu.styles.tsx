@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import { styled as styled2 } from "styled-components";
 import { Button, Container, Typography } from "@mui/material";
 
-export const MenuContainer = styled("div")(({ theme }) => ({
+export const MenuContainer = styled("div")<{ open: boolean }>(({ theme, open }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
@@ -12,6 +12,9 @@ export const MenuContainer = styled("div")(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     position: "absolute",
+    ...open && {
+      position: "fixed",
+    },
     top: 15,
     left: 15,
     pointerEvents: "none",

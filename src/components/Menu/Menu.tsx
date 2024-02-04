@@ -67,7 +67,7 @@ const Menu = ({}) => {
   };
 
   return (
-    <MenuContainer>
+    <MenuContainer open={open}>
       <Hamburger color="inherit" onClick={() => setOpen(!open)}>{open ? "X" : "Menu"}</Hamburger>
 
       <List open={open}>
