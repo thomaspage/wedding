@@ -65,7 +65,7 @@ const Menu = ({}) => {
 
   return (
     <MenuContainer>
-      <Hamburger onClick={() => setOpen(!open)}>Menu</Hamburger>
+      <Hamburger color="inherit" onClick={() => setOpen(!open)}>{open ? "X" : "Menu"}</Hamburger>
 
       <List open={open}>
         {routes.map((route, i) => {

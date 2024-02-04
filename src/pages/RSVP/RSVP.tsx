@@ -208,7 +208,7 @@ const RSVP = ({}) => {
 
           <FormGroup
             sx={{
-              marginBottom: 3,
+              marginBottom: 2,
             }}
           >
             <FormControlLabel

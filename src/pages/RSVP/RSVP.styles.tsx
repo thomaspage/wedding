@@ -29,7 +29,7 @@ export const GuestGroup = styled("div")({
 export const StyledRadioGroup = styled(RadioGroup)(({ theme }) => ({
   flexDirection: "row",
   gap: "5px",
-  marginBottom: 20,
+  marginBottom: 50,
 
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",

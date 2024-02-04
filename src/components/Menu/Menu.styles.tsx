@@ -11,11 +11,9 @@ export const MenuContainer = styled("div")(({ theme }) => ({
   zIndex: 1,
 
   [theme.breakpoints.down("md")]: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    position: "absolute",
+    top: 15,
+    left: 15,
     pointerEvents: "none",
     width: "100%",
   },
