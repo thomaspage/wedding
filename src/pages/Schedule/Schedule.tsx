@@ -42,7 +42,7 @@ const Schedule = ({}) => {
         </TimelineItem> */}
         <TimelineItem>
           <TimelineOppositeContent>5:00pm</TimelineOppositeContent>
-          <TimelineSeparator>
+          <TimelineSeparator sx={{ height: 100 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
@@ -50,7 +50,7 @@ const Schedule = ({}) => {
         </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent>6:00pm</TimelineOppositeContent>
-          <TimelineSeparator sx={{ height: 150 }}>
+          <TimelineSeparator sx={{ height: 100 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
@@ -69,7 +69,7 @@ const Schedule = ({}) => {
         {/* Dancing */}
         <TimelineItem>
           <TimelineOppositeContent>10:00pm</TimelineOppositeContent>
-          <TimelineSeparator sx={{ height: 300 }}>
+          <TimelineSeparator sx={{ height: 400 }}>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
             <div
