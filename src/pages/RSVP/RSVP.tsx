@@ -62,7 +62,6 @@ const RSVP = ({}) => {
       body: JSON.stringify(data),
     }).then((response) => {
 
-      console.log("response", response.text())
       setLoading(false)
       handleFormCompletion();
 
