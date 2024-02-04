@@ -37,7 +37,6 @@ const emptyGuest: Guest = {
 };
 
 const RSVP = ({}) => {
-
   const { t } = useTranslation();
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
@@ -59,30 +58,31 @@ const RSVP = ({}) => {
 
     fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      mode: 'cors',
+      mode: "cors",
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
       body: JSON.stringify(data),
-    }).then((response) => {
-
-      setLoading(false)
-      handleFormCompletion();
-
-    }).catch((error) => {
-
-      console.error("Error:", error);
-       setLoading(false)
-      alert("There was an error submitting your RSVP. Please try again.")
     })
+      .then((response) => {
+        setLoading(false);
+        handleFormCompletion();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setLoading(false);
+        alert("There was an error submitting your RSVP. Please try again.");
+      });
   };
 
   const handleFormCompletion = () => {
-    const rsvpMessage = attending ? "Thank you for submitting your response, we can't wait to see you!" : "We'll miss you at the wedding, but hope to see you soon! Thank you for submitting your response."
-    localStorage.setItem("rsvpMessage", rsvpMessage)
-    setCompleted(true)
-  }
-  const rsvpMessage = localStorage.getItem("rsvpMessage")
+    const rsvpMessage = attending
+      ? "rsvpMessageAttending"
+      : "rsvpMessageNotAttending";
+    localStorage.setItem("rsvpMessage", rsvpMessage);
+    setCompleted(true);
+  };
+  const rsvpMessage = localStorage.getItem("rsvpMessage");
 
   const [completed, setCompleted] = useState<boolean>(!!rsvpMessage);
   const [loading, setLoading] = useState<boolean>(false);
@@ -92,11 +92,9 @@ const RSVP = ({}) => {
   const [attending, setAttending] = useState<boolean>(true);
 
   if (completed) {
-
-
     return (
       <RSVPContainer>
-        <RSVPResponse variant="h3">{rsvpMessage}</RSVPResponse>
+        <RSVPResponse variant="h3">{t(`pages.rsvp.${rsvpMessage}`)}</RSVPResponse>
       </RSVPContainer>
     );
   }
@@ -157,7 +155,9 @@ const RSVP = ({}) => {
 
             {bringingGuest && (
               <GuestGroup>
-                <Typography fontWeight={500}>{t("pages.rsvp.guest2")}</Typography>
+                <Typography fontWeight={500}>
+                  {t("pages.rsvp.guest2")}
+                </Typography>
 
                 <TextField
                   type="text"
@@ -235,7 +235,11 @@ const RSVP = ({}) => {
             <FormControlLabel
               value={true}
               control={<Radio />}
-              label={bringingGuest ? t("pages.rsvp.wellBeThere") : t("pages.rsvp.illBeThere")}
+              label={
+                bringingGuest
+                  ? t("pages.rsvp.wellBeThere")
+                  : t("pages.rsvp.illBeThere")
+              }
               sx={{ flexBasis: 20, flexGrow: 1 }}
             />
             <div style={{ flexBasis: 20, flexGrow: 2 }}>
@@ -267,12 +271,15 @@ const RSVP = ({}) => {
               {t("pages.rsvp.submit")}
             </Button>
           </div>
-
         </FormControl>
       </form>
 
-      <Typography sx={{maxWidth: 450, textAlign: "right", marginLeft: 'auto'}} fontSize="0.8em">{t("pages.rsvp.infants")}</Typography>
-
+      <Typography
+        sx={{ maxWidth: 450, textAlign: "right", marginLeft: "auto" }}
+        fontSize="0.8em"
+      >
+        {t("pages.rsvp.infants")}
+      </Typography>
     </RSVPContainer>
   );
 };

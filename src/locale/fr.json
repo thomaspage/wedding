@@ -28,7 +28,7 @@
             },
             "accomodations": {
                 "path": "Hébergement",
-                "message": "Nous n'avons pas réservé de bloc de chambres, alors n'hésitez pas à vous loger où vous le souhaitez ! Que vous trouviez un AirBnb génial dans Le Plateau ou un bel hôtel dans le Vieux-Montréal, la réception et la cérémonie sont à 5 minutes de marche de la station de métro McGill sur la ligne verte. Si vous préférez rester à proximité du site, vous trouverez ci-dessous quelques options d'hôtels à proximité."
+                "message": "Nous n'avons pas réservé de bloc de chambres, alors n'hésitez pas à vous loger où vous le souhaitez ! Que vous trouviez un AirBnb génial dans Le Plateau ou un bel hôtel dans le Vieux-Montréal, la réception et la cérémonie sont à 5 minutes de marche de la station de métro McGill sur la ligne verte. Si vous préférez rester à proximité, vous trouverez ci-dessous quelques options d'hôtels à proximité."
             },
             "rsvp": {
                 "path": "RSVP",
@@ -43,7 +43,10 @@
                 "illBeThere": "J'y serai",
                 "notAttending": "Je ne pourrai pas y être",
                 "submit": "Envoyer",
-                "infants": "Bien qu'il s'agisse d'un événement réservé aux plus de 18 ans, les nourrissons sont les bienvenus. Veuillez nous en informer dès que possible pour que les arrangements soient faits."
+                "infants": "Bien qu'il s'agisse d'un événement réservé aux plus de 18 ans, les nourrissons sont les bienvenus. Veuillez nous en informer dès que possible pour que les arrangements soient faits.",
+                "rsvpMessageAttending": "Merci pour votre réponse, nous sommes excités de vous voir!",
+                "rsvpMessageNotAttending": "Vous nous manquerez, mais nous espérons vous voir bientôt! Merci d'avoir envoyé votre réponse.",
+                "rsvpMessageError": "Il y a eu une erreur lors de la soumission de votre réponse. Veuillez réessayer."                
             }
         }
     }

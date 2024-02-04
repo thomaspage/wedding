@@ -43,7 +43,10 @@
                 "illBeThere": "I'll be there",
                 "notAttending": "Can't make it",
                 "submit": "Submit",
-                "infants": "While this is an 18+ event, we are able to accomodate nursing infants. Please let us know as soon as possible so that the proper arrangements can be made."
+                "infants": "While this is an 18+ event, we are able to accomodate nursing infants. Please let us know as soon as possible so that the proper arrangements can be made.",
+                "rsvpMessageAttending": "Thank you for submitting your response, we can't wait to see you!",
+                "rsvpMessageNotAttending": "We'll miss you at the wedding, but hope to see you soon! Thank you for submitting your response.",
+                "rsvpMessageError": "There was an error submitting your RSVP. Please try again."
             }
         }
     }
