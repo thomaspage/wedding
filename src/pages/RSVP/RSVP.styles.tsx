@@ -1,3 +1,4 @@
+import { RadioGroup } from "@mui/material";
 import {styled} from "styled-components";
 
 
@@ -25,3 +26,14 @@ export const GuestGroup = styled('div')({
     display: 'inline-flex',
     flexDirection: 'column',
 })
+
+export const StyledRadioGroup = styled(RadioGroup)(({theme}) => ({
+
+    flexDirection: "row",
+    gap: "5px",
+    marginBottom: 20,
+
+    [theme.breakpoints.down("md")]: {
+        flexDirection: "column",
+    }
+}))

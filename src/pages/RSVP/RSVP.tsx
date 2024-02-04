@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { GuestGroup, GuestsContainer, RSVPContainer } from "./RSVP.styles";
+import { GuestGroup, GuestsContainer, RSVPContainer, StyledRadioGroup } from "./RSVP.styles";
 
 interface Guest {
   firstName: string;
@@ -157,15 +157,9 @@ const RSVP = ({}) => {
             )}
           </GuestsContainer>
 
-          <RadioGroup
+          <StyledRadioGroup
             value={attending}
             onChange={(e) => setAttending(e.target.value === "true")}
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: "10px",
-              marginBottom: 1,
-            }}
           >
             <FormControlLabel
               value={true}
@@ -179,7 +173,7 @@ const RSVP = ({}) => {
               label="Can't make it"
               sx={{ flexBasis: 20, flexGrow: 2 }}
             />
-          </RadioGroup>
+          </StyledRadioGroup>
 
           <FormGroup
             sx={{
