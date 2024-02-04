@@ -29,19 +29,19 @@ const Schedule = ({}) => {
       //   },
       // }}
       >
-        <TimelineItem>
+        {/* <TimelineItem>
           <TimelineOppositeContent>5:00pm</TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <Typography>Guest arrival</Typography>
+            <Typography>Guest arrival & welcome drink</Typography>
             <Typography color="#333" fontSize="0.8em">We have organized complimentary valet parking for all wedding guests</Typography>
           </TimelineContent>
-        </TimelineItem>
+        </TimelineItem> */}
         <TimelineItem>
-          <TimelineOppositeContent>5:30pm</TimelineOppositeContent>
+          <TimelineOppositeContent>5:00pm</TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot variant="outlined" />
             <TimelineConnector />
