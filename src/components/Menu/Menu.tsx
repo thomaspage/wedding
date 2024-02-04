@@ -20,40 +20,40 @@ const Menu = ({}) => {
       pathname: "/",
       label: "Home",
       hearts: {
-        id: 2,
-        height: 25,
-        top: -9,
-        right: 0,
+        version: 2,
+        $height: 25,
+        $top: -9,
+        $right: 0,
       },
     },
     {
       pathname: "/schedule",
       label: "Schedule",
       hearts: {
-        id: 1,
-        height: 22,
-        top: -2,
-        left: -13,
+        version: 1,
+        $height: 22,
+        $top: -2,
+        $left: -13,
       },
     },    
     {
       pathname: "/accomodations",
       label: "Accomodations",
       hearts: {
-        id: 4,
-        height: 14,
-        top: -5,
-        right: 0,
+        version: 4,
+        $height: 14,
+        $top: -5,
+        $right: 0,
       },
     },
     {
       pathname: "/rsvp",
       label: "RSVP",
       hearts: {
-        id: 3,
-        height: 14,
-        bottom: 10,
-        right: 3,
+        version: 3,
+        $height: 14,
+        $bottom: 10,
+        $right: 3,
       },
     },
   ];
@@ -70,10 +70,11 @@ const Menu = ({}) => {
       <List open={open}>
         {routes.map((route, i) => {
           const selected = route.pathname === location.pathname;
+          const src = `${process.env.PUBLIC_URL}/img/hearts${route.hearts.version}.png`
           return (
             <ListItem key={i} to={route.pathname} onClick={handleClick}>
               <ListType selected={selected}>{route.label}</ListType>
-              {selected && route.hearts && <Hearts {...route.hearts} />}
+              {selected && route.hearts && <Hearts src={src} {...route.hearts} />}
             </ListItem>
           );
         })}

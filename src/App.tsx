@@ -37,9 +37,15 @@ function App() {
       h4: {
         fontFamily: "Ballantines",
       },
+      
       body1: {
         fontFamily: 'PPHatton',
         fontSize: '1rem',
+        fontWeight: 200,
+      },
+      body2: {
+        fontFamily: 'serif',
+        fontSize: '0.8rem',
         fontWeight: 200,
       },
       fontFamily: [

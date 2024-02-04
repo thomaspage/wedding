@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox,
+  CircularProgress,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -11,7 +12,16 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { GuestGroup, GuestsContainer, RSVPContainer, StyledRadioGroup } from "./RSVP.styles";
+import {
+  GuestGroup,
+  GuestsContainer,
+  RSVPContainer,
+  RSVPResponse,
+  StyledRadioGroup,
+} from "./RSVP.styles";
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbz8iseBD1icEud31klYkjPCXTNImOoPHQorT6KkNdhL5Cbfuc50zEx59OAQYSrH-o3Elw/exec";
 
 interface Guest {
   firstName: string;
@@ -27,37 +37,76 @@ const emptyGuest: Guest = {
 
 const RSVP = ({}) => {
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    // Prevent page reload
     event.preventDefault();
-    console.log("primaryGuest", primaryGuest);
-    console.log("secondaryGuest", secondaryGuest);
 
-    // console.log("event", event.target.reset())
-    setCompleted(true);
+    // Disable form
+    setLoading(true);
+
+    const data = {
+      primaryGuest,
+      secondaryGuest,
+      attending,
+      bringingGuest,
+    };
+
+    // Testing
+    // setTimeout(() => handleFormCompletion(), 1000);
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: 'cors',
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+
+      console.log("response", response.text())
+      setLoading(false)
+      handleFormCompletion();
+
+    }).catch((error) => {
+
+      console.error("Error:", error);
+       setLoading(false)
+      alert("There was an error submitting your RSVP. Please try again.")
+    })
   };
 
-  const [completed, setCompleted] = useState<boolean>(false);
-  const [bringingAGuest, setBringingAGuest] = useState<boolean>(true);
+  const handleFormCompletion = () => {
+    const rsvpMessage = attending ? "Thank you for submitting your response, we can't wait to see you!" : "We'll miss you at the wedding, but hope to see you soon! Thank you for submitting your response."
+    localStorage.setItem("rsvpMessage", rsvpMessage)
+    setCompleted(true)
+  }
+  const rsvpMessage = localStorage.getItem("rsvpMessage")
+
+  const [completed, setCompleted] = useState<boolean>(!!rsvpMessage);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [bringingGuest, setBringingGuest] = useState<boolean>(true);
   const [primaryGuest, setPrimaryGuest] = useState<Guest>(emptyGuest);
   const [secondaryGuest, setSecondaryGuest] = useState<Guest>(emptyGuest);
   const [attending, setAttending] = useState<boolean>(true);
 
-  // if (completed) {
-  //     return (
-  //         <div>
-  //             Completed
-  //         </div>
-  //     )
-  // }
+  if (completed) {
+
+
+    return (
+      <RSVPContainer>
+        <RSVPResponse variant="h3">{rsvpMessage}</RSVPResponse>
+      </RSVPContainer>
+    );
+  }
 
   return (
     <RSVPContainer>
       <form onSubmit={handleSubmit}>
-        <FormControl
-            sx={{width: "100%"}}
-        >
+        <FormControl sx={{ width: "100%" }} disabled={loading}>
           <GuestsContainer>
             <GuestGroup>
-              <Typography fontWeight={500}>Guest {bringingAGuest && attending && "One"}</Typography>
+              <Typography fontWeight={500}>
+                Guest {bringingGuest && "One"}
+              </Typography>
               <TextField
                 type="text"
                 variant="standard"
@@ -103,7 +152,7 @@ const RSVP = ({}) => {
               />
             </GuestGroup>
 
-            {bringingAGuest && attending && (
+            {bringingGuest && (
               <GuestGroup>
                 <Typography fontWeight={500}>Guest Two</Typography>
 
@@ -157,6 +206,25 @@ const RSVP = ({}) => {
             )}
           </GuestsContainer>
 
+          <FormGroup
+            sx={{
+              marginBottom: 3,
+            }}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={!bringingGuest}
+                  onChange={() => {
+                    setBringingGuest(!bringingGuest);
+                    setSecondaryGuest(emptyGuest);
+                  }}
+                />
+              }
+              label="It's just me"
+            />
+          </FormGroup>
+
           <StyledRadioGroup
             value={attending}
             onChange={(e) => setAttending(e.target.value === "true")}
@@ -164,40 +232,39 @@ const RSVP = ({}) => {
             <FormControlLabel
               value={true}
               control={<Radio />}
-              label={bringingAGuest ? "We'll be there" : "I'll be there"}
+              label={bringingGuest ? "We'll be there" : "I'll be there"}
               sx={{ flexBasis: 20, flexGrow: 1 }}
             />
-            <FormControlLabel
-              value={false}
-              control={<Radio />}
-              label="Can't make it"
-              sx={{ flexBasis: 20, flexGrow: 2 }}
-            />
+            <div style={{ flexBasis: 20, flexGrow: 2 }}>
+              <FormControlLabel
+                value={false}
+                control={<Radio />}
+                label="Can't make it"
+              />
+              {!attending && <span>😭</span>}
+            </div>
           </StyledRadioGroup>
 
-          <FormGroup
-            sx={{
-                marginBottom: 3,
-              ...(!attending && {
-                opacity: 0,
-                pointerEvents: "none",
-              }),
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: 20,
             }}
           >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={bringingAGuest}
-                  onChange={() => setBringingAGuest(!bringingAGuest)}
-                />
-              }
-              label="I'm bringing a guest"
-            />
-          </FormGroup>
+            {loading && <CircularProgress size={20} />}
 
-          <Button variant="outlined" color="primary" type="submit">
-            Submit
-          </Button>
+            <Button
+              disabled={loading}
+              sx={{ width: 150 }}
+              variant="outlined"
+              color="primary"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </div>
         </FormControl>
       </form>
     </RSVPContainer>

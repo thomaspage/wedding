@@ -101,23 +101,21 @@ export const ListType = styled2(Typography).attrs({
   })
 );
 
-export const Hearts = styled2("img").attrs(({ id }) => ({
-  src: `${process.env.PUBLIC_URL}/img/hearts${id}.png`,
-}))<{
-  id?: number;
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-  height?: number;
-}>(({ theme, height, top, bottom, left, right }) => ({
+
+export const Hearts = styled2("img")<{
+  $top?: number;
+  $bottom?: number;
+  $left?: number;
+  $right?: number;
+  $height?: number;
+}>(({ theme, $height, $top, $bottom, $left, $right }) => ({
 
 
   position: "absolute",
-  top: top !== undefined ? top : "unset",
-  bottom: bottom !== undefined ? bottom : "unset",
-  left: left !== undefined ? left : "unset",
-  right: right !== undefined ? right : "unset",
-  height: height !== undefined ? height : "unset",
+  top: $top !== undefined ? $top : "unset",
+  bottom: $bottom !== undefined ? $bottom : "unset",
+  left: $left !== undefined ? $left : "unset",
+  right: $right !== undefined ? $right : "unset",
+  height: $height !== undefined ? $height : "unset",
 
 }));
