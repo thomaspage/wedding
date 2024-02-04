@@ -52,8 +52,8 @@ const Menu = ({}) => {
       hearts: {
         id: 3,
         height: 14,
-        bottom: -10,
-        right: -3,
+        bottom: 10,
+        right: 3,
       },
     },
   ];
