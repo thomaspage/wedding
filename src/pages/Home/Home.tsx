@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import {
   ScheduleContainer,
   HomeContainer,
-  Img,
   Place,
   Time,
 } from "./Home.styles";
@@ -24,7 +23,7 @@ const Home = ({}) => {
         <Time>
           <Typography variant="h3">On Sunday,</Typography>
           <Typography variant="h3">September 1, 2024</Typography>
-          <Typography variant="h3">5 oclock in the afternoon.</Typography>
+          <Typography variant="h3">5 o'clock in the afternoon.</Typography>
         </Time>
         <Place>
           <Typography variant="h3">Jatoba</Typography>

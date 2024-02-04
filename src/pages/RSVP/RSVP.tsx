@@ -243,7 +243,6 @@ const RSVP = ({}) => {
               {!attending && <span>😭</span>}
             </div>
           </StyledRadioGroup>
-
           <div
             style={{
               display: "flex",
@@ -264,8 +263,12 @@ const RSVP = ({}) => {
               Submit
             </Button>
           </div>
+
         </FormControl>
       </form>
+
+      <Typography sx={{maxWidth: 450, textAlign: "right", marginLeft: 'auto'}} fontSize="0.8em">While this is an 18+ event, we are able to accomodate nursing infants. Please let us know as soon as possible so that the proper arrangements can be made.</Typography>
+
     </RSVPContainer>
   );
 };

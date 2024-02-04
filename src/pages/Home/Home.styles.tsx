@@ -26,8 +26,3 @@ export const Place = styled('div')({
 
 
 })
-
-export const Img = styled('img')({
-    width: '100%',
-    padding: 20,
-})
