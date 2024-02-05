@@ -3,16 +3,20 @@ import { LayoutContainer, Title } from "./Layout.styles";
 import Menu from "../Menu";
 import Content from "../Content";
 import LanguageSelector from "../LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const Layout = ({}) => {
 
   const location = useLocation()
+
+  const { t } = useTranslation();
   
   const title = {
-    "/accomodations": "Accomodations",
-    "/schedule": "Schedule",
-    "/rsvp": "RSVP",
+    "/accomodations": t("pages.accomodations.path"),
+    "/schedule": t("pages.schedule.path"),
+    "/rsvp": t("pages.rsvp.path"),
   }[location.pathname]
+
   return (
     <LayoutContainer>
       {/* Menu */}
@@ -21,7 +25,7 @@ const Layout = ({}) => {
       {/* Content */}
       <Content>
         <>
-          <Title sx={{textAlign: title === "Schedule" ? "center": ""}}>{title}</Title>
+          <Title sx={{textAlign: location.pathname === "/schedule" ? "center": ""}}>{title}</Title>
           <Outlet />
         </>
       </Content>
