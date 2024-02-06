@@ -4,6 +4,7 @@ import {
   HomeContainer,
   Place,
   Time,
+  Title,
 } from "./Home.styles";
 import { useTranslation } from "react-i18next";
 
@@ -13,7 +14,7 @@ const Home = ({}) => {
   
   return (
     <HomeContainer>
-      <Typography variant="h1" fontSize="4rem">
+      <Title variant="h1">
         {t("pages.home.title.1")}
         <br />
         {t("pages.home.title.2")}
@@ -21,7 +22,7 @@ const Home = ({}) => {
         {t("pages.home.title.3")}
         <br />
         {t("pages.home.title.4")}
-      </Typography>
+      </Title>
 
       <ScheduleContainer>
         <Time>
