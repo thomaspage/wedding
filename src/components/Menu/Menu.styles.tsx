@@ -18,7 +18,6 @@ export const MenuContainer = styled("div")<{ open: boolean }>(({ theme, open }) 
     top: 15,
     left: 15,
     pointerEvents: "none",
-    width: "100%",
   },
 }));
 
