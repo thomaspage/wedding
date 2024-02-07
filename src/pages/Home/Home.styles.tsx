@@ -30,7 +30,8 @@ export const Title = styled(Typography)(({ theme }) => ({
   },
 
   [theme.breakpoints.down("sm")]: {
-    fontSize: "2.65rem",
+    paddingRight: "10%",
+    fontSize: "2.7rem",
   },
 
 }));
