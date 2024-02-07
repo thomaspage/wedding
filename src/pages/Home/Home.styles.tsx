@@ -23,15 +23,19 @@ export const Place = styled("div")({});
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
+  whiteSpace: "nowrap",
+  transformOrigin: "bottom left",
 
-//   [theme.breakpoints.down("md")]: {
-//     paddingRight: "20%",
-//     fontSize: "3rem",
-//   },
+  //   [theme.breakpoints.down("md")]: {
+  //     paddingRight: "20%",
+  //     fontSize: "3rem",
+  //   },
+
+  transition: "transform 0.5s, margin-top 0.5s",
 
   [theme.breakpoints.down("sm")]: {
-    paddingRight: "0%",
-    fontSize: "2.8rem",
+    transform: "scale(0.6)",
+    marginTop: "-8rem",
   },
 
 }));

@@ -17,7 +17,11 @@ const Home = ({}) => {
       <Title variant="h1">
         Max & Tom
         <br />
-        {t("pages.home.title.2")} {t("pages.home.title.3")} {t("pages.home.title.4")}
+        {t("pages.home.title.2")}
+        <br />
+        {t("pages.home.title.3")}
+        <br />
+        {t("pages.home.title.4")}
       </Title>
 
       <ScheduleContainer>
