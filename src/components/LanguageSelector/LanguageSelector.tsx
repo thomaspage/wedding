@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import * as amplitude from '@amplitude/analytics-browser';
+import { useTranslation } from "react-i18next";
 import {
   Hamburger,
   LanguageSelectorContainer,
 } from "./LanguageSelector.styles";
-import { Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
 
 const LanguageSelector = ({}) => {
 
   const { i18n } = useTranslation();
 
   const isEnglish = i18n.resolvedLanguage === "en";
-  
+  const language = isEnglish ? "fr" : "en"
+
   const toggleLanguage = () => {
-    i18n.changeLanguage(isEnglish ? "fr" : "en");
+    amplitude.track("Change Language", { language })
+    i18n.changeLanguage(language);
   }
 
   return (
     <LanguageSelectorContainer>
-      <Hamburger color="inherit" onClick={toggleLanguage}>{isEnglish ? "fr" : "en"}</Hamburger>
+      <Hamburger color="inherit" onClick={toggleLanguage}>{language}</Hamburger>
 
     </LanguageSelectorContainer>
   );

@@ -1,19 +1,18 @@
-import styled, { ThemeProvider } from "styled-components";
 import { createTheme } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Outlet,
   Navigate,
+  Route,
+  HashRouter as Router,
+  Routes
 } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout";
 import Accomodations from "./pages/Accomodations";
 import Home from "./pages/Home";
 import RSVP from "./pages/RSVP";
 import Schedule from "./pages/Schedule";
-import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
 
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
     i18n.on('languageChanged', (lng) => {
       setLanguage(lng)
     })
-  }, [])
+  }, [i18n])
 
   const theme = createTheme({
     typography: {

@@ -20,6 +20,7 @@ import {
   StyledRadioGroup,
 } from "./RSVP.styles";
 import { useTranslation } from "react-i18next";
+import * as amplitude from "@amplitude/analytics-browser";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz8iseBD1icEud31klYkjPCXTNImOoPHQorT6KkNdhL5Cbfuc50zEx59OAQYSrH-o3Elw/exec";
@@ -52,6 +53,8 @@ const RSVP = ({}) => {
       attending,
       bringingGuest,
     };
+
+    amplitude.track("RSVP", data);
 
     // Testing
     // setTimeout(() => handleFormCompletion(), 1000);
