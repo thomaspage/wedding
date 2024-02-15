@@ -18,7 +18,7 @@
             "schedule": {
                 "path": "Schedule",
                 "ceremony": "Ceremony",
-                "cocktail": "Cocktail",
+                "cocktail": "Cocktail hour",
                 "dinner": "Dinner",
                 "dancing": "Dancing",
                 "5pm": "5:00pm",
