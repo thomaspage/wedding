@@ -97,12 +97,12 @@ const RSVP = ({}) => {
 
   if (completed) {
     return (
-      <RSVPContainer style={{gap: 20}}>
+      <RSVPContainer style={{ gap: 20 }}>
         {showArrow && (
           <>
             <Arrow />
             <MoreDetails variant="h2">
-              {t("pages.rsvp.more_details")}
+              {t("pages.rsvp.moreDetails")}
             </MoreDetails>
           </>
         )}
@@ -110,14 +110,33 @@ const RSVP = ({}) => {
           {t(`pages.rsvp.${rsvpMessage}`)}
         </RSVPResponse>
 
-        <div style={{display: "flex", flexDirection: "column", gap: 10}}>
-          <CalendarLink onClick={() => amplitude.track("Click", {button: "Add to Calendar", calendar: "Google"})} target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGc3MTNwOHJkczBtbmd0ZTczdXBwdGVjbWMgdGhvbWFzLmRhbmllbC5wYWdlQGljbG91ZC5jb20&tmsrc=thomas.daniel.page%40icloud.com">
-            + Add to Google Calendar
-          </CalendarLink>
-          <CalendarLink onClick={() => amplitude.track("Click", {button: "Add to Calendar", calendar: "iCal"})} href={`${process.env.PUBLIC_URL}/invite.ics`}>
-            + Add to iCal
-          </CalendarLink>
-        </div>
+        {rsvpMessage === "rsvpMessageAttending" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <CalendarLink
+              onClick={() =>
+                amplitude.track("Click", {
+                  button: "Add to Calendar",
+                  calendar: "Google",
+                })
+              }
+              target="_blank"
+              href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGc3MTNwOHJkczBtbmd0ZTczdXBwdGVjbWMgdGhvbWFzLmRhbmllbC5wYWdlQGljbG91ZC5jb20&tmsrc=thomas.daniel.page%40icloud.com"
+            >
+              + {t("pages.rsvp.addToGoogle")}
+            </CalendarLink>
+            <CalendarLink
+              onClick={() =>
+                amplitude.track("Click", {
+                  button: "Add to Calendar",
+                  calendar: "iCal",
+                })
+              }
+              href={`${process.env.PUBLIC_URL}/invite.ics`}
+            >
+              + {t("pages.rsvp.addToICal")}
+            </CalendarLink>
+          </div>
+        )}
       </RSVPContainer>
     );
   }
