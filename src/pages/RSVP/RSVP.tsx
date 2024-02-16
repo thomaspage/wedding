@@ -5,22 +5,23 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel,
   Radio,
-  RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
 import {
+  CalendarLink,
   GuestGroup,
   GuestsContainer,
+  MoreDetails,
   RSVPContainer,
   RSVPResponse,
   StyledRadioGroup,
 } from "./RSVP.styles";
 import { useTranslation } from "react-i18next";
 import * as amplitude from "@amplitude/analytics-browser";
+import Arrow from "./arrow";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz8iseBD1icEud31klYkjPCXTNImOoPHQorT6KkNdhL5Cbfuc50zEx59OAQYSrH-o3Elw/exec";
@@ -40,6 +41,16 @@ const emptyGuest: Guest = {
 const RSVP = ({}) => {
   const { t } = useTranslation();
 
+  const rsvpMessage = localStorage.getItem("rsvpMessage");
+
+  const [completed, setCompleted] = useState<boolean>(!!rsvpMessage);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [bringingGuest, setBringingGuest] = useState<boolean>(true);
+  const [primaryGuest, setPrimaryGuest] = useState<Guest>(emptyGuest);
+  const [secondaryGuest, setSecondaryGuest] = useState<Guest>(emptyGuest);
+  const [attending, setAttending] = useState<boolean>(true);
+  const [showArrow, setShowArrow] = useState<boolean>(false);
+
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     // Prevent page reload
     event.preventDefault();
@@ -55,9 +66,6 @@ const RSVP = ({}) => {
     };
 
     amplitude.track("RSVP", data);
-
-    // Testing
-    // setTimeout(() => handleFormCompletion(), 1000);
 
     fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
@@ -84,20 +92,32 @@ const RSVP = ({}) => {
       : "rsvpMessageNotAttending";
     localStorage.setItem("rsvpMessage", rsvpMessage);
     setCompleted(true);
+    setShowArrow(true);
   };
-  const rsvpMessage = localStorage.getItem("rsvpMessage");
-
-  const [completed, setCompleted] = useState<boolean>(!!rsvpMessage);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [bringingGuest, setBringingGuest] = useState<boolean>(true);
-  const [primaryGuest, setPrimaryGuest] = useState<Guest>(emptyGuest);
-  const [secondaryGuest, setSecondaryGuest] = useState<Guest>(emptyGuest);
-  const [attending, setAttending] = useState<boolean>(true);
 
   if (completed) {
     return (
-      <RSVPContainer>
-        <RSVPResponse variant="h3">{t(`pages.rsvp.${rsvpMessage}`)}</RSVPResponse>
+      <RSVPContainer style={{gap: 20}}>
+        {showArrow && (
+          <>
+            <Arrow />
+            <MoreDetails variant="h2">
+              {t("pages.rsvp.more_details")}
+            </MoreDetails>
+          </>
+        )}
+        <RSVPResponse variant="h3">
+          {t(`pages.rsvp.${rsvpMessage}`)}
+        </RSVPResponse>
+
+        <div style={{display: "flex", flexDirection: "column", gap: 10}}>
+          <CalendarLink onClick={() => amplitude.track("Click", {button: "Add to Calendar", calendar: "Google"})} target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGc3MTNwOHJkczBtbmd0ZTczdXBwdGVjbWMgdGhvbWFzLmRhbmllbC5wYWdlQGljbG91ZC5jb20&tmsrc=thomas.daniel.page%40icloud.com">
+            + Add to Google Calendar
+          </CalendarLink>
+          <CalendarLink onClick={() => amplitude.track("Click", {button: "Add to Calendar", calendar: "iCal"})} href={`${process.env.PUBLIC_URL}/invite.ics`}>
+            + Add to iCal
+          </CalendarLink>
+        </div>
       </RSVPContainer>
     );
   }

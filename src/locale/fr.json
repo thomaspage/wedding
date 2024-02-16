@@ -44,6 +44,7 @@
                 "notAttending": "Je ne pourrai pas y être",
                 "submit": "Envoyer",
                 "infants": "Bien qu'il s'agisse d'un événement réservé aux plus de 18 ans, les nourrissons sont les bienvenus. Veuillez nous en informer dès que possible pour que les arrangements soient faits.",
+                "more_details": "plus d'information",
                 "rsvpMessageAttending": "Merci pour votre réponse, nous sommes excités de vous voir!",
                 "rsvpMessageNotAttending": "Vous nous manquerez, mais nous espérons vous voir bientôt! Merci d'avoir envoyé votre réponse.",
                 "rsvpMessageError": "Il y a eu une erreur lors de la soumission de votre réponse. Veuillez réessayer."                

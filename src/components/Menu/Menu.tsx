@@ -8,15 +8,15 @@ import {
   ListType,
   MenuContainer,
 } from "./Menu.styles";
-import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import * as amplitude from "@amplitude/analytics-browser";
 
 const Menu = ({}) => {
   const [open, setOpen] = useState(false);
 
   const { t } = useTranslation();
 
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const routes = [
     {
@@ -38,7 +38,7 @@ const Menu = ({}) => {
         $top: -2,
         $left: -13,
       },
-    },    
+    },
     {
       pathname: "/accomodations",
       label: t("pages.accomodations.path"),
@@ -64,20 +64,25 @@ const Menu = ({}) => {
   const handleClick = () => {
     setOpen(false);
     window.scrollTo(0, 0);
+    amplitude.track("Click", { button: "Menu", pathname });
   };
 
   return (
     <MenuContainer open={open}>
-      <Hamburger color="inherit" onClick={() => setOpen(!open)}>{open ? "X" : "Menu"}</Hamburger>
+      <Hamburger color="inherit" onClick={() => setOpen(!open)}>
+        {open ? "X" : "Menu"}
+      </Hamburger>
 
       <List open={open}>
         {routes.map((route, i) => {
-          const selected = route.pathname === location.pathname;
-          const src = `${process.env.PUBLIC_URL}/img/hearts${route.hearts.version}.png`
+          const selected = route.pathname === pathname;
+          const src = `${process.env.PUBLIC_URL}/img/hearts${route.hearts.version}.png`;
           return (
             <ListItem key={i} to={route.pathname} onClick={handleClick}>
               <ListType selected={selected}>{route.label}</ListType>
-              {selected && route.hearts && <Hearts src={src} {...route.hearts} />}
+              {selected && route.hearts && (
+                <Hearts src={src} {...route.hearts} />
+              )}
             </ListItem>
           );
         })}

@@ -1,4 +1,4 @@
-import { RadioGroup, Typography } from "@mui/material";
+import { Button, RadioGroup, Typography } from "@mui/material";
 import { styled } from "styled-components";
 
 export const RSVPContainer = styled("div")({
@@ -44,3 +44,45 @@ export const RSVPResponse = styled(Typography)(({ theme }) => ({
     margin: "auto",    
   },
 }));
+
+export const CalendarLink = styled(Button)<{target?: string}>(({ theme }) => ({
+
+  textTransform: "none",
+  alignSelf: "baseline",
+  letterSpacing: 0.5,
+  fontWeight: 200,
+
+  [theme.breakpoints.up("md")]: {
+    alignSelf: "auto"
+  },
+
+  // [theme.breakpoints.up("md")]: {
+  //   textAlign: "center",
+  //   margin: "auto",    
+  // },
+}));
+
+
+
+export const MoreDetails = styled(Typography)`
+  position: fixed;
+  top: 80px;
+  left: 125px;
+  display: none;
+  opacity: 0;
+
+  animation-duration: 2s;
+  animation-delay: 1.25s;
+  animation-fill-mode: forwards;
+  animation-name: appear;  
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    display: block;
+  }
+
+  @keyframes appear {
+    to {
+      opacity: 1;
+    }
+  }  
+`
