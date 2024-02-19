@@ -30,7 +30,7 @@ const StyledArrow = styled(SvgComponent)`
   position: fixed;
   top: 50px;
   left: 40px;
-  width: 75px;
+  width: 50px;
   height: 75px;
   margin: 0 auto;
   transform: rotate(110deg) scaleX(-1);

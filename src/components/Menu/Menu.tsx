@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
+  Buns,
   Hamburger,
   Hearts,
   List,
   ListItem,
   ListType,
   MenuContainer,
+  Patty,
 } from "./Menu.styles";
 import { useTranslation } from "react-i18next";
 import * as amplitude from "@amplitude/analytics-browser";
@@ -70,7 +72,12 @@ const Menu = ({}) => {
   return (
     <MenuContainer open={open}>
       <Hamburger color="inherit" onClick={() => setOpen(!open)}>
-        {open ? "X" : "Menu"}
+        <Buns>
+          <Patty open={open} />
+          <Patty open={open} />
+          <Patty open={open} />
+        </Buns>
+        {/* {open ? "✕" : "☰"} */}
       </Hamburger>
 
       <List open={open}>

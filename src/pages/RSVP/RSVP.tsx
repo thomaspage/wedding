@@ -49,7 +49,7 @@ const RSVP = ({}) => {
   const [primaryGuest, setPrimaryGuest] = useState<Guest>(emptyGuest);
   const [secondaryGuest, setSecondaryGuest] = useState<Guest>(emptyGuest);
   const [attending, setAttending] = useState<boolean>(true);
-  const [showArrow, setShowArrow] = useState<boolean>(false);
+  const [showArrow, setShowArrow] = useState<boolean>(true);
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     // Prevent page reload

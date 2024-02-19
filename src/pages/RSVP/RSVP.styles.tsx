@@ -67,7 +67,7 @@ export const CalendarLink = styled(Button)<{target?: string}>(({ theme }) => ({
 export const MoreDetails = styled(Typography)`
   position: fixed;
   top: 80px;
-  left: 125px;
+  left: 115px;
   display: none;
   opacity: 0;
 
