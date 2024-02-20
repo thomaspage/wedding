@@ -120,7 +120,7 @@ const RSVP = ({}) => {
                 })
               }
               target="_blank"
-              href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGg4cnF2Z3M4b2I2bG5hcDFuaXBrbjRsdDQgdG9tZ2lybGplYW5zQG0&tmsrc=tomgirljeans%40gmail.com"
+              href="https://www.google.com/calendar/render?action=TEMPLATE&text=Max%20%26%20Tom%20Wedding&dates=20240901T170000/20240902T000000&location=Jatoba%2C%201184%20R.%20du%20Square-Phillips%2C%20Montr%C3%A9al%2C%20QC%20H3B%203C8%2C%20Canada&ctz=America/Toronto&sf=true&output=xml"
             >
               + {t("pages.rsvp.addToGoogle")}
             </CalendarLink>
