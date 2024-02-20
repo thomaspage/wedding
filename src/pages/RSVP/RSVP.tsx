@@ -120,7 +120,7 @@ const RSVP = ({}) => {
                 })
               }
               target="_blank"
-              href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGg4cnF2Z3M4b2I2bG5hcDFuaXBrbjRsdDQgdGhvbWFzLmRhbmllbC5wYWdlQGljbG91ZC5jb20&tmsrc=thomas.daniel.page%40icloud.com"
+              href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGg4cnF2Z3M4b2I2bG5hcDFuaXBrbjRsdDQgdG9tZ2lybGplYW5zQG0&tmsrc=tomgirljeans%40gmail.com"
             >
               + {t("pages.rsvp.addToGoogle")}
             </CalendarLink>
