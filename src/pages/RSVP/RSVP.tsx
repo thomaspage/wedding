@@ -24,7 +24,7 @@ import * as amplitude from "@amplitude/analytics-browser";
 import Arrow from "./arrow";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbz8iseBD1icEud31klYkjPCXTNImOoPHQorT6KkNdhL5Cbfuc50zEx59OAQYSrH-o3Elw/exec";
+  "https://script.google.com/macros/s/AKfycbwHwQ8hUXeDbZKq-uSX6VEYU2JBLyASKacpqv_CAVYP5W_q8RQJCTX4sgEdHpg1It8XZw/exec";
 
 interface Guest {
   firstName: string;
