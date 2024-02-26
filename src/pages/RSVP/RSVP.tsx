@@ -24,7 +24,7 @@ import * as amplitude from "@amplitude/analytics-browser";
 import Arrow from "./arrow";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyPS2jmTZcHTb9lLpy1Iw8Vd4VVo-M_zKhn_tYwwz7-2kInhIg6WwqcmhpSChNlDmVqFg/exec";
+  "https://script.google.com/macros/s/AKfycbwkIFgSIwIaCqDrXY57LUEg8ykIb9pnk9RmWSGn2I2zvubhDNBU1UsRnVhTB9-uRc0Hvw/exec";
 
 interface Guest {
   firstName: string;
@@ -68,6 +68,7 @@ const RSVP = ({}) => {
     amplitude.track("RSVP", data);
 
     fetch(GOOGLE_SCRIPT_URL, {
+      redirect: "follow",
       method: "POST",
       mode: "cors",
       headers: {
