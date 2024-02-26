@@ -24,7 +24,7 @@ import * as amplitude from "@amplitude/analytics-browser";
 import Arrow from "./arrow";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyeWYgzKBUZwQqJQogoSzmE0U2hZ2SChx48OxPb50-qNPhKxXU43FgWGxjn7LuKBg6SWg/exec";
+  "https://script.google.com/macros/s/AKfycbyPS2jmTZcHTb9lLpy1Iw8Vd4VVo-M_zKhn_tYwwz7-2kInhIg6WwqcmhpSChNlDmVqFg/exec";
 
 interface Guest {
   firstName: string;
@@ -83,6 +83,10 @@ const RSVP = ({}) => {
         console.error("Error:", error);
         setLoading(false);
         alert("There was an error submitting your RSVP. Please try again.");
+        amplitude.track("Error", {
+          data,
+          error: "There was an error submitting your RSVP. Please try again."
+        })
       });
   };
 
