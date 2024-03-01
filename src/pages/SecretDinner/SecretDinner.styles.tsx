@@ -5,6 +5,7 @@ export const SecretDinnerContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: 50,
+  marginTop: "-10vh",
 });
 
 export const GuestsContainer = styled("div")(({ theme }) => ({
