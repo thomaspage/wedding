@@ -1,7 +1,7 @@
 import { Button, RadioGroup, Typography } from "@mui/material";
 import { styled } from "styled-components";
 
-export const RSVPContainer = styled("div")({
+export const SecretDinnerContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: 50,
@@ -36,7 +36,7 @@ export const StyledRadioGroup = styled(RadioGroup)(({ theme }) => ({
   },
 }));
 
-export const RSVPResponse = styled(Typography)(({ theme }) => ({
+export const SecretDinnerResponse = styled(Typography)(({ theme }) => ({
   width: 300,
 
   [theme.breakpoints.up("md")]: {

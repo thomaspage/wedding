@@ -15,8 +15,8 @@ import {
   GuestGroup,
   GuestsContainer,
   MoreDetails,
-  RSVPContainer,
-  RSVPResponse,
+  SecretDinnerContainer,
+  SecretDinnerResponse,
   StyledRadioGroup,
 } from "./SecretDinner.styles";
 import { useTranslation } from "react-i18next";
@@ -65,7 +65,7 @@ const SecretDinner = ({}) => {
       bringingGuest,
     };
 
-    amplitude.track("RSVP", data);
+    amplitude.track("SecretDinner", data);
 
     fetch(GOOGLE_SCRIPT_URL, {
       redirect: "follow",
@@ -83,10 +83,10 @@ const SecretDinner = ({}) => {
       .catch((error) => {
         console.error("Error:", error);
         setLoading(false);
-        alert("There was an error submitting your RSVP. Please try again.");
+        alert("There was an error submitting your SecretDinner. Please try again.");
         amplitude.track("Error", {
           data,
-          error: "There was an error submitting your RSVP. Please try again.",
+          error: "There was an error submitting your SecretDinner. Please try again.",
         });
       });
   };
@@ -101,10 +101,10 @@ const SecretDinner = ({}) => {
 
   if (completed) {
     return (
-      <RSVPContainer style={{ gap: 20 }}>
-        <RSVPResponse variant="h3">
+      <SecretDinnerContainer style={{ gap: 20 }}>
+        <SecretDinnerResponse variant="h3">
           {t(`pages.rsvp.${rsvpMessage}`)}
-        </RSVPResponse>
+        </SecretDinnerResponse>
 
         {rsvpMessage === "rsvpMessageAttending" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -133,12 +133,12 @@ const SecretDinner = ({}) => {
             </CalendarLink>
           </div>
         )}
-      </RSVPContainer>
+      </SecretDinnerContainer>
     );
   }
 
   return (
-    <RSVPContainer>
+    <SecretDinnerContainer>
       <video
         autoPlay
         loop
@@ -364,7 +364,7 @@ const SecretDinner = ({}) => {
       >
         {t("pages.rsvp.infants")}
       </Typography> */}
-    </RSVPContainer>
+    </SecretDinnerContainer>
   );
 };
 
