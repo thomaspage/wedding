@@ -85,8 +85,8 @@ const Menu = ({}) => {
       hearts: {
         version: 5,
         $height: 30,
-        $right: -25,
-        $bottom: 10,
+        $right: -20,
+        $bottom: 7,
       }
     });
 
