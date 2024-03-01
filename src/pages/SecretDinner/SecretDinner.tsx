@@ -18,9 +18,10 @@ import {
   RSVPContainer,
   RSVPResponse,
   StyledRadioGroup,
-} from "./Dinner.styles";
+} from "./SecretDinner.styles";
 import { useTranslation } from "react-i18next";
 import * as amplitude from "@amplitude/analytics-browser";
+import { Link } from "react-router-dom";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwkIFgSIwIaCqDrXY57LUEg8ykIb9pnk9RmWSGn2I2zvubhDNBU1UsRnVhTB9-uRc0Hvw/exec";
@@ -37,7 +38,7 @@ const emptyGuest: Guest = {
   dietaryRestrictions: "",
 };
 
-const RSVP = ({}) => {
+const SecretDinner = ({}) => {
   const { t } = useTranslation();
 
   const rsvpMessage = localStorage.getItem("rsvpMessage");
@@ -85,8 +86,8 @@ const RSVP = ({}) => {
         alert("There was an error submitting your RSVP. Please try again.");
         amplitude.track("Error", {
           data,
-          error: "There was an error submitting your RSVP. Please try again."
-        })
+          error: "There was an error submitting your RSVP. Please try again.",
+        });
       });
   };
 
@@ -138,9 +139,53 @@ const RSVP = ({}) => {
 
   return (
     <RSVPContainer>
-      <video autoPlay loop muted playsInline poster={`${process.env.PUBLIC_URL}/img/dinner-thumb.jpeg`} className="css-ulzci0 e11ujaq91"><source src={`${process.env.PUBLIC_URL}/video/dinner-hero`} type="video/mp4" /></video>
-      <div>asdfasdf</div>
-      <form onSubmit={handleSubmit}>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster={`${process.env.PUBLIC_URL}/img/dinner-thumb.jpeg`}
+      >
+        <source
+          src={`${process.env.PUBLIC_URL}/video/dinner-hero`}
+          type="video/mp4"
+        />
+      </video>
+      <div style={{maxWidth: 400, margin: "auto"}}>
+        <Typography variant="h1" textAlign="center" marginBottom={2}>
+          {/* {t("pages.rsvp.guest1")} */}A DINNER BEFORE <br />
+          "I DO"
+        </Typography>
+        <Typography textAlign="center">
+          {/* {t("pages.rsvp.guest1")} */}
+          Inviting all our friends old + new, near + far to meet and mingle at
+          our place before the big day!
+        </Typography>
+      </div>
+      <div onClick={() => console.log("hi")}>
+        <Typography variant="h3" textAlign="center">
+          {/* {t("pages.rsvp.guest1")} */}
+          FRIDAY, AUGUST 30
+        </Typography>
+        <Typography variant="h3" textAlign="center">
+          {/* {t("pages.rsvp.guest1")} */}
+          7:00PM
+        </Typography>
+      </div>
+      <div onClick={() => console.log("hi")}>
+        <Typography variant="h3" textAlign="center">
+          {/* {t("pages.rsvp.guest1")} */}
+          OUR PLACE
+        </Typography>
+        <Typography variant="h3" textAlign="center">
+          {/* {t("pages.rsvp.guest1")} */}
+          243 RUE SQUARE-SIR-GEORGE-ÉTIENNE-CARTIER
+          <br />
+          MONTRÉAL, QC H4C 3A3
+        </Typography>
+      </div>
+
+      {/* <form onSubmit={handleSubmit}>
         <FormControl sx={{ width: "100%" }} disabled={loading}>
           <GuestsContainer>
             <GuestGroup>
@@ -311,16 +356,16 @@ const RSVP = ({}) => {
             </Button>
           </div>
         </FormControl>
-      </form>
+      </form> */}
 
-      <Typography
+      {/* <Typography
         sx={{ maxWidth: 450, textAlign: "right", marginLeft: "auto" }}
         fontSize="0.8em"
       >
         {t("pages.rsvp.infants")}
-      </Typography>
+      </Typography> */}
     </RSVPContainer>
   );
 };
 
-export default RSVP;
+export default SecretDinner;

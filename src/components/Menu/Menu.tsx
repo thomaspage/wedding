@@ -20,8 +20,8 @@ const Menu = ({}) => {
 
   const { pathname } = useLocation();
 
-  const [showDinner, setShowDinner] = useState(
-    !!localStorage.getItem("showDinner")
+  const [showSecretDinner, setShowSecretDinner] = useState(
+    !!localStorage.getItem("showSecretDinner")
   );
 
   const routes: {
@@ -78,17 +78,23 @@ const Menu = ({}) => {
     },
   ];
 
-  showDinner &&
+  showSecretDinner &&
     routes.push({
-      pathname: "/dinner",
-      label: "Dinnaa",
+      pathname: "/secret-dinner",
+      label: "Secret Dinner",
+      hearts: {
+        version: 5,
+        $height: 30,
+        $right: -25,
+        $bottom: 10,
+      }
     });
 
-  // Show dinner permanently if user navigates to it
+  // Show secret-dinner permanently if user navigates to it
   useEffect(() => {
-    if (pathname === "/dinner") {
-      localStorage.setItem("showDinner", "true");
-      setShowDinner(true);
+    if (pathname === "/secret-dinner") {
+      localStorage.setItem("showSecretDinner", "true");
+      setShowSecretDinner(true);
     }
   }, [pathname]);
 

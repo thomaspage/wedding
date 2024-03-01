@@ -12,7 +12,7 @@ import Layout from "./components/Layout";
 import Accomodations from "./pages/Accomodations";
 import Home from "./pages/Home";
 import RSVP from "./pages/RSVP";
-import Dinner from "./pages/Dinner";
+import SecretDinner from "./pages/SecretDinner";
 import Schedule from "./pages/Schedule";
 
 
@@ -78,7 +78,7 @@ function App() {
               <Route path="accomodations" element={<Accomodations />} />
               <Route path="schedule" element={<Schedule />} />
               <Route path="rsvp" element={<RSVP />} />
-              <Route path="dinner" element={<Dinner />} />
+              <Route path="secret-dinner" element={<SecretDinner />} />
 
               {/* Redirect to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
