@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
   Buns,
@@ -20,7 +20,22 @@ const Menu = ({}) => {
 
   const { pathname } = useLocation();
 
-  const routes = [
+  const [showDinner, setShowDinner] = useState(
+    !!localStorage.getItem("showDinner")
+  );
+
+  const routes: {
+    pathname: string;
+    label: string;
+    hearts?: {
+      version: number;
+      $height?: number;
+      $top?: number;
+      $right?: number;
+      $left?: number;
+      $bottom?: number;
+    };
+  }[] = [
     {
       pathname: "/",
       label: t("pages.home.path"),
@@ -63,6 +78,20 @@ const Menu = ({}) => {
     },
   ];
 
+  showDinner &&
+    routes.push({
+      pathname: "/dinner",
+      label: "Dinnaa",
+    });
+
+  // Show dinner permanently if user navigates to it
+  useEffect(() => {
+    if (pathname === "/dinner") {
+      localStorage.setItem("showDinner", "true");
+      setShowDinner(true);
+    }
+  }, [pathname]);
+
   const handleClick = () => {
     setOpen(false);
     window.scrollTo(0, 0);
@@ -77,13 +106,12 @@ const Menu = ({}) => {
           <Patty open={open} />
           <Patty open={open} />
         </Buns>
-        {/* {open ? "✕" : "☰"} */}
       </Hamburger>
 
       <List open={open}>
         {routes.map((route, i) => {
           const selected = route.pathname === pathname;
-          const src = `${process.env.PUBLIC_URL}/img/hearts${route.hearts.version}.png`;
+          const src = `${process.env.PUBLIC_URL}/img/hearts${route.hearts?.version}.png`;
           return (
             <ListItem key={i} to={route.pathname} onClick={handleClick}>
               <ListType selected={selected}>{route.label}</ListType>
