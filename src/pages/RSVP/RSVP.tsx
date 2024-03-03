@@ -62,7 +62,7 @@ const RSVP = ({}) => {
       primaryGuest,
       secondaryGuest,
       attending,
-      bringingGuest,
+      bringingGuest: bringingGuest && attending,
     };
 
     amplitude.track("RSVP", data);
