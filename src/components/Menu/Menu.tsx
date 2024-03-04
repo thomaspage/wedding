@@ -81,7 +81,7 @@ const Menu = ({}) => {
   showSecretDinner &&
     routes.push({
       pathname: "/secret-dinner",
-      label: "Secret Dinner",
+      label: t("pages.secretDinner.path"),
       hearts: {
         version: 5,
         $height: 30,

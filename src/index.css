@@ -54,3 +54,18 @@ a {
   font-family: "Ballantines";
   src: url("fonts/ballantines.woff") format('woff');
 }
+
+
+
+@font-face {
+  font-family: "Cooper";
+  font-weight: 300;
+  src: url("fonts/cooperl.ttf") format('truetype');
+}
+
+
+@font-face {
+  font-family: "Cooper";
+  font-weight: 500;
+  src: url("fonts/cooperm.ttf") format('truetype');
+}

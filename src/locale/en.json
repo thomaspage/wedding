@@ -50,6 +50,15 @@
                 "rsvpMessageAttending": "Thank you for submitting your response, we can't wait to see you!",
                 "rsvpMessageNotAttending": "We'll miss you at the wedding, but hope to see you soon! Thank you for submitting your response.",
                 "rsvpMessageError": "There was an error submitting your RSVP. Please try again."
+            },
+            "secretDinner": {
+                "path": "Secret Dinner",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "yes": "Yes",
+                "no": "No",
+                "submit": "Submit",
+                "attending": "Total Attending"
             }
         }
     }

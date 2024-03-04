@@ -22,9 +22,7 @@ import {
 import { useTranslation } from "react-i18next";
 import * as amplitude from "@amplitude/analytics-browser";
 import Arrow from "./arrow";
-
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwkIFgSIwIaCqDrXY57LUEg8ykIb9pnk9RmWSGn2I2zvubhDNBU1UsRnVhTB9-uRc0Hvw/exec";
+import { GOOGLE_SCRIPT_URL } from "../../App";
 
 interface Guest {
   firstName: string;

@@ -5,9 +5,14 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
+  Dialog,
   Radio,
   TextField,
+  ThemeProvider,
   Typography,
+  createTheme,
+  ToggleButtonGroup,
+  ToggleButton,
 } from "@mui/material";
 import { useState } from "react";
 import {
@@ -22,21 +27,7 @@ import {
 import { useTranslation } from "react-i18next";
 import * as amplitude from "@amplitude/analytics-browser";
 import { Link } from "react-router-dom";
-
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwkIFgSIwIaCqDrXY57LUEg8ykIb9pnk9RmWSGn2I2zvubhDNBU1UsRnVhTB9-uRc0Hvw/exec";
-
-interface Guest {
-  firstName: string;
-  lastName: string;
-  dietaryRestrictions: string;
-}
-
-const emptyGuest: Guest = {
-  firstName: "",
-  lastName: "",
-  dietaryRestrictions: "",
-};
+import { GOOGLE_SCRIPT_URL, theme } from "../../App";
 
 const SecretDinner = ({}) => {
   const { t } = useTranslation();
@@ -46,9 +37,10 @@ const SecretDinner = ({}) => {
   // const [completed, setCompleted] = useState<boolean>(!!rsvpMessage);
   const [completed, setCompleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [bringingGuest, setBringingGuest] = useState<boolean>(true);
-  const [primaryGuest, setPrimaryGuest] = useState<Guest>(emptyGuest);
-  const [secondaryGuest, setSecondaryGuest] = useState<Guest>(emptyGuest);
+  const [modalOpen, setModalOpen] = useState<boolean>(true);
+  const [numberOfGuests, setNumberOfGuests] = useState<number>(2);
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [attending, setAttending] = useState<boolean>(true);
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
@@ -59,10 +51,11 @@ const SecretDinner = ({}) => {
     setLoading(true);
 
     const data = {
-      primaryGuest,
-      secondaryGuest,
+      action: "secret-dinner-rsvp",
       attending,
-      bringingGuest,
+      firstName,
+      lastName,
+      numberOfGuests,
     };
 
     amplitude.track("SecretDinner", data);
@@ -83,10 +76,13 @@ const SecretDinner = ({}) => {
       .catch((error) => {
         console.error("Error:", error);
         setLoading(false);
-        alert("There was an error submitting your SecretDinner. Please try again.");
+        alert(
+          "There was an error submitting your SecretDinner. Please try again."
+        );
         amplitude.track("Error", {
           data,
-          error: "There was an error submitting your SecretDinner. Please try again.",
+          error:
+            "There was an error submitting your SecretDinner. Please try again.",
         });
       });
   };
@@ -103,7 +99,7 @@ const SecretDinner = ({}) => {
     return (
       <SecretDinnerContainer style={{ gap: 20 }}>
         <SecretDinnerResponse variant="h3">
-          {t(`pages.rsvp.${rsvpMessage}`)}
+          {t(`pages.secretDinner.${rsvpMessage}`)}
         </SecretDinnerResponse>
 
         {rsvpMessage === "rsvpMessageAttending" && (
@@ -118,7 +114,7 @@ const SecretDinner = ({}) => {
               target="_blank"
               href="https://www.google.com/calendar/render?action=TEMPLATE&text=Max%20%26%20Tom%20Wedding&dates=20240901T170000/20240902T000000&location=Jatoba%2C%201184%20R.%20du%20Square-Phillips%2C%20Montr%C3%A9al%2C%20QC%20H3B%203C8%2C%20Canada&ctz=America/Toronto&sf=true&output=xml"
             >
-              + {t("pages.rsvp.addToGoogle")}
+              + {t("pages.secretDinner.addToGoogle")}
             </CalendarLink>
             <CalendarLink
               onClick={() =>
@@ -129,7 +125,7 @@ const SecretDinner = ({}) => {
               }
               href={`${process.env.PUBLIC_URL}/invite.ics`}
             >
-              + {t("pages.rsvp.addToICal")}
+              + {t("pages.secretDinner.addToICal")}
             </CalendarLink>
           </div>
         )}
@@ -137,234 +133,234 @@ const SecretDinner = ({}) => {
     );
   }
 
+  const theme2 = createTheme({
+    ...theme,
+    typography: {
+      ...theme.typography,
+      h1: {
+        ...theme.typography.h1,
+        letterSpacing: "0.15em",
+      },
+      h3: {
+        ...theme.typography.h3,
+        fontSize: "1rem",
+        // fontWeight: 300,
+        // lineHeight: "1.5em",
+        letterSpacing: "0.25em",
+      },
+      fontFamily: ["Cooper", "PPHatton"].join(","),
+    },
+  });
+
   return (
-    <SecretDinnerContainer>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster={`${process.env.PUBLIC_URL}/img/dinner-thumb.jpeg`}
-      >
-        <source
-          src={`${process.env.PUBLIC_URL}/video/dinner-hero`}
-          type="video/mp4"
-        />
-      </video>
-      <div style={{maxWidth: 400, margin: "auto"}}>
-        <Typography variant="h1" textAlign="center" marginBottom={2}>
-          {/* {t("pages.rsvp.guest1")} */}A DINNER BEFORE <br />
-          "I DO"
-        </Typography>
-        <Typography textAlign="center">
-          {/* {t("pages.rsvp.guest1")} */}
-          Inviting all our friends old + new, near + far to meet and mingle at
-          our place before the big day!
-        </Typography>
-      </div>
-      <div onClick={() => console.log("hi")}>
-        <Typography variant="h3" textAlign="center">
-          {/* {t("pages.rsvp.guest1")} */}
-          FRIDAY, AUGUST 30
-        </Typography>
-        <Typography variant="h3" textAlign="center">
-          {/* {t("pages.rsvp.guest1")} */}
-          7:00PM
-        </Typography>
-      </div>
-      <div onClick={() => console.log("hi")}>
-        <Typography variant="h3" textAlign="center">
-          {/* {t("pages.rsvp.guest1")} */}
-          OUR PLACE
-        </Typography>
-        <Typography variant="h3" textAlign="center">
-          {/* {t("pages.rsvp.guest1")} */}
-          243 RUE SQUARE-SIR-GEORGE-ÉTIENNE-CARTIER
-          <br />
-          MONTRÉAL, QC H4C 3A3
-        </Typography>
-      </div>
-
-      {/* <form onSubmit={handleSubmit}>
-        <FormControl sx={{ width: "100%" }} disabled={loading}>
-          <GuestsContainer>
-            <GuestGroup>
-              <Typography fontWeight={500}>
-                {bringingGuest ? t("pages.rsvp.guest1") : t("pages.rsvp.guest")}
-              </Typography>
-              <TextField
-                type="text"
-                variant="standard"
-                color="primary"
-                label={t("pages.rsvp.firstName")}
-                onChange={(e) =>
-                  setPrimaryGuest({
-                    ...primaryGuest,
-                    firstName: e.target.value,
-                  })
-                }
-                value={primaryGuest.firstName}
-                fullWidth
-                required
-              />
-
-              <TextField
-                type="text"
-                variant="standard"
-                color="primary"
-                label={t("pages.rsvp.lastName")}
-                onChange={(e) =>
-                  setPrimaryGuest({ ...primaryGuest, lastName: e.target.value })
-                }
-                value={primaryGuest.lastName}
-                fullWidth
-                required
-              />
-
-              <TextField
-                type="text"
-                variant="standard"
-                color="primary"
-                label={t("pages.rsvp.dietaryRestrictions")}
-                onChange={(e) =>
-                  setPrimaryGuest({
-                    ...primaryGuest,
-                    dietaryRestrictions: e.target.value,
-                  })
-                }
-                value={primaryGuest.dietaryRestrictions}
-                fullWidth
-              />
-            </GuestGroup>
-
-            {bringingGuest && (
-              <GuestGroup>
-                <Typography fontWeight={500}>
-                  {t("pages.rsvp.guest2")}
-                </Typography>
-
-                <TextField
-                  type="text"
-                  variant="standard"
-                  color="primary"
-                  label={t("pages.rsvp.firstName")}
-                  onChange={(e) =>
-                    setSecondaryGuest({
-                      ...secondaryGuest,
-                      firstName: e.target.value,
-                    })
-                  }
-                  value={secondaryGuest.firstName}
-                  fullWidth
-                  required
-                />
-
-                <TextField
-                  type="text"
-                  variant="standard"
-                  color="primary"
-                  label={t("pages.rsvp.lastName")}
-                  onChange={(e) =>
-                    setSecondaryGuest({
-                      ...secondaryGuest,
-                      lastName: e.target.value,
-                    })
-                  }
-                  value={secondaryGuest.lastName}
-                  fullWidth
-                  required
-                />
-
-                <TextField
-                  type="text"
-                  variant="standard"
-                  color="primary"
-                  label={t("pages.rsvp.dietaryRestrictions")}
-                  onChange={(e) =>
-                    setSecondaryGuest({
-                      ...secondaryGuest,
-                      dietaryRestrictions: e.target.value,
-                    })
-                  }
-                  value={secondaryGuest.dietaryRestrictions}
-                  fullWidth
-                />
-              </GuestGroup>
-            )}
-          </GuestsContainer>
-
-          <FormGroup
-            sx={{
-              marginBottom: 2,
-            }}
+    <ThemeProvider theme={theme2}>
+      <SecretDinnerContainer>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={`${process.env.PUBLIC_URL}/img/dinner-thumb.jpeg`}
+        >
+          <source
+            src={`${process.env.PUBLIC_URL}/video/dinner-hero`}
+            type="video/mp4"
+          />
+        </video>
+        <div style={{ maxWidth: 400, margin: "auto" }}>
+          <Typography variant="h1" textAlign="center" marginBottom={2}>
+            {/* {t("pages.secretDinner.guest1")} */}A DINNER BEFORE <br />
+            "I DO"
+          </Typography>
+          <Typography textAlign="center">
+            {/* {t("pages.secretDinner.guest1")} */}
+            Inviting all our friends old + new, near + far to meet and mingle at
+            our place before the big day!
+          </Typography>
+        </div>
+        <div onClick={() => console.log("hi")}>
+          <Typography variant="h3" textAlign="center">
+            {/* {t("pages.secretDinner.guest1")} */}
+            FRIDAY, AUGUST 30
+          </Typography>
+          <Typography variant="h3" textAlign="center">
+            {/* {t("pages.secretDinner.guest1")} */}
+            7:00PM
+          </Typography>
+        </div>
+        <div onClick={() => console.log("hi")}>
+          <Typography variant="h3" textAlign="center">
+            {/* {t("pages.secretDinner.guest1")} */}
+            OUR PLACE
+          </Typography>
+          <Typography variant="h3" textAlign="center">
+            {/* {t("pages.secretDinner.guest1")} */}
+            243 RUE SQUARE-SIR-GEORGE-ÉTIENNE-CARTIER
+            <br />
+            MONTRÉAL, QC H4C 3A3
+          </Typography>
+        </div>
+        <div style={{ margin: "auto" }}>
+          <Button
+            onClick={() => setModalOpen(true)}
+            sx={{ paddingLeft: 5, paddingRight: 5 }}
+            variant="contained"
           >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={!bringingGuest}
-                  onChange={() => {
-                    setBringingGuest(!bringingGuest);
-                    setSecondaryGuest(emptyGuest);
-                  }}
-                />
-              }
-              label={t("pages.rsvp.justMe")}
-            />
-          </FormGroup>
+            <Typography variant="h3">RSVP</Typography>
+          </Button>
+        </div>
+      </SecretDinnerContainer>
+      <Dialog
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        // container={"test"}
+        // anchor="bottom"
+      >
+        <div style={{ padding: 50 }}>
+          <Typography sx={{marginBottom: 3}} variant="h2">Can you make it?</Typography>
+
 
           <StyledRadioGroup
-            value={attending}
-            onChange={(e) => setAttending(e.target.value === "true")}
-          >
-            <FormControlLabel
-              value={true}
-              control={<Radio />}
-              label={
-                bringingGuest
-                  ? t("pages.rsvp.wellBeThere")
-                  : t("pages.rsvp.illBeThere")
-              }
-              sx={{ flexBasis: 20, flexGrow: 1 }}
-            />
-            <div style={{ flexBasis: 20, flexGrow: 2 }}>
-              <FormControlLabel
-                value={false}
-                control={<Radio />}
-                label={t("pages.rsvp.notAttending")}
-              />
-              {!attending && <span>😭</span>}
-            </div>
-          </StyledRadioGroup>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-              gap: 20,
-            }}
-          >
-            {loading && <CircularProgress size={20} />}
+                value={attending}
+                onChange={(e) => setAttending(e.target.value === "true")}
+              >
+                <FormControlLabel
+                  value={true}
+                  control={<Radio />}
+                  label={t("pages.secretDinner.yes")}
+                  sx={{ flexBasis: 20, flexGrow: 1 }}
+                />
+                <div style={{ flexBasis: 20, flexGrow: 2 }}>
+                  <FormControlLabel
+                    value={false}
+                    control={<Radio />}
+                    label={t("pages.secretDinner.no")}
+                  />
+                  {!attending && <span>🤫</span>}
+                </div>
+              </StyledRadioGroup>          
+          <form onSubmit={handleSubmit}>
+            <FormControl sx={{ width: "100%" }} disabled={loading}>
+              <GuestsContainer>
+                <GuestGroup>
+                  {/* <Typography fontWeight={500}>
+                  {t("pages.secretDinner.guest")}
+                </Typography> */}
 
-            <Button
-              disabled={loading}
-              sx={{ width: 150 }}
-              variant="outlined"
-              color="primary"
-              type="submit"
+                  <TextField
+                    type="text"
+                    variant="standard"
+                    color="primary"
+                    label={t("pages.secretDinner.firstName")}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    value={firstName}
+                    fullWidth
+                    required
+                  />
+
+                  <TextField
+                    type="text"
+                    variant="standard"
+                    color="primary"
+                    label={t("pages.secretDinner.lastName")}
+                    onChange={(e) => setLastName(e.target.value)}
+                    value={lastName}
+                    fullWidth
+                    required
+                  />
+                </GuestGroup>
+              </GuestsContainer>
+              {/* 
+            <ToggleButtonGroup exclusive value={attending ? ["yes"] : ["no"]} onChange={(e, value) => setAttending(value === "yes")}>
+              <ToggleButton value="yes">Yes</ToggleButton>
+              <ToggleButton value="no">No</ToggleButton>
+            </ToggleButtonGroup> */}
+
+              {/* <FormGroup
+              sx={{
+                marginBottom: 2,
+              }}
             >
-              {t("pages.rsvp.submit")}
-            </Button>
-          </div>
-        </FormControl>
-      </form> */}
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={!bringingGuest}
+                    onChange={() => {
+                      setNumberOfGuests(!bringingGuest);
+                      setSecondaryGuest(emptyGuest);
+                    }}
+                  />
+                }
+                label={t("pages.secretDinner.justMe")}
+              />
+            </FormGroup> */}
 
-      {/* <Typography
-        sx={{ maxWidth: 450, textAlign: "right", marginLeft: "auto" }}
-        fontSize="0.8em"
-      >
-        {t("pages.rsvp.infants")}
-      </Typography> */}
-    </SecretDinnerContainer>
+              {attending && (
+                <div>
+                <div style={{marginBottom: 30, textAlign: "center"}}>
+                  <Typography fontWeight={500}>
+                    {t("pages.secretDinner.attending")}
+                  </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: 20,
+                    }}
+                  >
+                    <Button
+                      variant="outlined"
+                      sx={{padding: 1, minWidth: 40, aspectRatio: "1/1", borderRadius: 1000, justifyContent: "center", alignItems: "center", display: "flex"}}
+                      disabled={numberOfGuests <= 1}
+                      onClick={() => setNumberOfGuests(numberOfGuests - 1)}
+                    >
+                      ▼
+                    </Button>
+                    <div>{numberOfGuests}</div>
+                    <Button
+                      variant="outlined"
+                      sx={{padding: 1, minWidth: 40, aspectRatio: "1/1", borderRadius: 1000, justifyContent: "center", alignItems: "center", display: "flex"}}
+                      disabled={numberOfGuests >= 3}
+                      onClick={() => setNumberOfGuests(numberOfGuests + 1)}
+                    >
+                      ▲
+                    </Button>
+                  </div>
+                </div>
+                <div>
+                  Private message to host
+                </div>
+                <div>
+                  Meal preference
+                </div>
+                </div>
+              )}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  gap: 20,
+                }}
+              >
+                {loading && <CircularProgress size={20} />}
+
+                <Button
+                  disabled={loading}
+                  sx={{ width: 150 }}
+                  variant="outlined"
+                  color="primary"
+                  type="submit"
+                >
+                  {t("pages.secretDinner.submit")}
+                </Button>
+              </div>
+            </FormControl>
+          </form>
+        </div>
+      </Dialog>
+    </ThemeProvider>
   );
 };
 

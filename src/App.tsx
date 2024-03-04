@@ -15,6 +15,44 @@ import RSVP from "./pages/RSVP";
 import SecretDinner from "./pages/SecretDinner";
 import Schedule from "./pages/Schedule";
 
+export const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwkIFgSIwIaCqDrXY57LUEg8ykIb9pnk9RmWSGn2I2zvubhDNBU1UsRnVhTB9-uRc0Hvw/exec";
+
+export const theme = {
+  typography: {
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 500,
+    },
+    h2: {
+      fontSize: '1.4rem',
+      fontWeight: 500,
+      lineHeight: "1.5em",
+    },
+    h3: {
+      fontSize: '1.05rem',
+      fontWeight: 500,
+      lineHeight: "1.5em",
+
+    },
+    h4: {
+      fontFamily: "Ballantines",
+    },
+    body1: {
+      fontSize: '1rem',
+      fontWeight: 200,
+    },
+    body2: {
+      fontSize: '0.8rem',
+      fontWeight: 200,
+    },
+    fontFamily: [
+      'PPHatton',
+      'serif',
+    ].join(",")
+  },
+};
+
 
 function App() {
 
@@ -28,49 +66,8 @@ function App() {
     })
   }, [i18n])
 
-  const theme = createTheme({
-    typography: {
-      h1: {
-        fontFamily: 'PPHatton',
-        fontSize: '2rem',
-        fontWeight: 500,
-      },
-      h2: {
-        fontFamily: 'PPHatton',
-        fontSize: '1.4rem',
-        fontWeight: 500,
-        lineHeight: "1.5em",
-      },
-      h3: {
-        fontFamily: 'PPHatton',
-        fontSize: '1.05rem',
-        fontWeight: 500,
-        lineHeight: "1.5em",
-      },
-      h4: {
-        fontFamily: "Ballantines",
-      },
-      
-      body1: {
-        fontFamily: 'PPHatton',
-        fontSize: '1rem',
-        fontWeight: 200,
-      },
-      body2: {
-        fontFamily: 'serif',
-        fontSize: '0.8rem',
-        fontWeight: 200,
-      },
-      fontFamily: [
-        'PPHatton',
-        'serif',
-      ].join(",")
-    },
-  });
-
   return (
-    <ThemeProvider theme={theme}>
-      <main>
+    <ThemeProvider theme={createTheme(theme)}>
         <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
@@ -85,7 +82,6 @@ function App() {
             </Route>
           </Routes>
         </Router>
-      </main>
     </ThemeProvider>
   );
 }

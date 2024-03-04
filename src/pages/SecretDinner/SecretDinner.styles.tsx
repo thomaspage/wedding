@@ -24,7 +24,7 @@ export const GuestGroup = styled("div")({
   flexGrow: 1,
   gap: 13,
   display: "inline-flex",
-  flexDirection: "column",
+  // flexDirection: "column",
 });
 
 export const StyledRadioGroup = styled(RadioGroup)(({ theme }) => ({
