@@ -80,7 +80,7 @@ const Menu = ({}) => {
 
   showSecretDinner &&
     routes.push({
-      pathname: "/secret-dinner",
+      pathname: "/welcome-evening",
       label: t("pages.secretDinner.path"),
       hearts: {
         version: 1,
@@ -90,9 +90,9 @@ const Menu = ({}) => {
       },
     });
 
-  // Show secret-dinner permanently if user navigates to it
+  // Show welcome-evening permanently if user navigates to it
   useEffect(() => {
-    if (pathname === "/secret-dinner") {
+    if (pathname === "/welcome-evening") {
       localStorage.setItem("showSecretDinner", "true");
       setShowSecretDinner(true);
     }

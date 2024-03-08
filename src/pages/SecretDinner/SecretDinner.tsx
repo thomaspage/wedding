@@ -79,7 +79,7 @@ const SecretDinner = ({}) => {
     setLoading(true);
 
     const data = {
-      action: "secret-dinner-rsvp",
+      action: "welcome-evening-rsvp",
       attending,
       firstName,
       lastName,
@@ -151,7 +151,7 @@ const SecretDinner = ({}) => {
                   calendar: "iCal",
                 })
               }
-              href={`${process.env.PUBLIC_URL}/secret-dinner-invite.ics`}
+              href={`${process.env.PUBLIC_URL}/welcome-evening-invite.ics`}
             >
               + {t("pages.secretDinner.addToICal")}
             </CalendarLink>

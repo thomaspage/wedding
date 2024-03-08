@@ -75,7 +75,7 @@ function App() {
               <Route path="accomodations" element={<Accomodations />} />
               <Route path="schedule" element={<Schedule />} />
               <Route path="rsvp" element={<RSVP />} />
-              <Route path="secret-dinner" element={<SecretDinner />} />
+              <Route path="welcome-evening" element={<SecretDinner />} />
 
               {/* Redirect to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
