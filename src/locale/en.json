@@ -52,7 +52,7 @@
                 "rsvpMessageError": "There was an error submitting your RSVP. Please try again."
             },
             "secretDinner": {
-                "path": "Secret Dinner",
+                "path": "Welcome Evening",
                 "firstName": "First Name",
                 "lastName": "Last Name",
                 "yes": "Yes",
@@ -69,7 +69,7 @@
                 "addToGoogle": "Add to Google Calendar",
                 "addToICal": "Add to iCal",
                 "canYouMakeIt": "Can you make it?",
-                "title1": "A DINNER BEFORE",
+                "title1": "AN EVENING BEFORE",
                 "title2": "\"I DO\""
             }
         }

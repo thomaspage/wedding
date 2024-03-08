@@ -83,11 +83,11 @@ const Menu = ({}) => {
       pathname: "/secret-dinner",
       label: t("pages.secretDinner.path"),
       hearts: {
-        version: 5,
-        $height: 30,
-        $right: -20,
-        $bottom: 7,
-      }
+        version: 1,
+        $height: 22,
+        $top: -2,
+        $left: -13,
+      },
     });
 
   // Show secret-dinner permanently if user navigates to it

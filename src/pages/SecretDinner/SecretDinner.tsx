@@ -176,7 +176,7 @@ const SecretDinner = ({}) => {
             type="video/mp4"
           />
         </video>
-        <div style={{ maxWidth: 400, margin: "auto" }}>
+        <div style={{ maxWidth: 450, margin: "auto" }}>
           <Typography variant="h1" textAlign="center" marginBottom={2}>
             {t("pages.secretDinner.title1")}<br />
             {t("pages.secretDinner.title2")}

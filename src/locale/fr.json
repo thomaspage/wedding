@@ -52,7 +52,7 @@
                 "rsvpMessageError": "Il y a eu une erreur lors de la soumission de votre réponse. Veuillez réessayer."
             },
             "secretDinner": {
-                "path": "Souper Secret",
+                "path": "Soirée de Bienvenue",
                 "firstName": "Prénom",
                 "lastName": "Nom de famille",
                 "yes": "Oui",
@@ -69,7 +69,7 @@
                 "addToGoogle": "Add to Google Calendar",
                 "addToICal": "Add to iCal",
                 "canYouMakeIt": "Serez-vous des nôtres?",
-                "title1": "UN SOUPER AVANT",
+                "title1": "UNE SOIRÉE AVANT",
                 "title2": "\"I DO\""
             }
         }
