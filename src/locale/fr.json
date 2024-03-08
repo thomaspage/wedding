@@ -49,7 +49,28 @@
                 "addToICal": "Ajoutez à votre iCal",
                 "rsvpMessageAttending": "Merci pour votre réponse, nous sommes excités de vous voir!",
                 "rsvpMessageNotAttending": "Vous nous manquerez, mais nous espérons vous voir bientôt! Merci d'avoir envoyé votre réponse.",
-                "rsvpMessageError": "Il y a eu une erreur lors de la soumission de votre réponse. Veuillez réessayer."                
+                "rsvpMessageError": "Il y a eu une erreur lors de la soumission de votre réponse. Veuillez réessayer."
+            },
+            "secretDinner": {
+                "path": "Souper Secret",
+                "firstName": "Prénom",
+                "lastName": "Nom de famille",
+                "yes": "Oui",
+                "no": "Non",
+                "cancel": "Annuler",
+                "submit": "Envoyer",
+                "attending": "Total des invités",
+                "rsvpMessageAttending": "Merci pour votre réponse, nous sommes excités de vous voir!",
+                "rsvpMessageNotAttending": "Vous nous manquerez, mais nous nous reverrons au mariage!",
+                "description": "Nous invitons tous nos amis, anciens et nouveaux, proches et lointains, à se rencontrer chez nous avant le grand jour!",
+                "date": "VENDREDI 30 AOÛT",
+                "time": "19h00",
+                "location": "CHEZ NOUS",
+                "addToGoogle": "Add to Google Calendar",
+                "addToICal": "Add to iCal",
+                "canYouMakeIt": "Serez-vous des nôtres?",
+                "title1": "UN SOUPER AVANT",
+                "title2": "\"I DO\""
             }
         }
     }
