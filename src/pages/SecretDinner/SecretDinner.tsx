@@ -225,7 +225,7 @@ const SecretDinner = ({}) => {
         // container={"test"}
         // anchor="bottom"
       >
-        <div style={{ padding: 50, minWidth: 500 }}>
+        <div style={{ padding: 50, minWidth: fullScreen ? "unset" : 500 }}>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ width: "100%" }} disabled={loading}>
               <GuestsContainer>
