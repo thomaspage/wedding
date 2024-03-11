@@ -68,7 +68,7 @@ const RSVP = ({}) => {
     fetch(GOOGLE_SCRIPT_URL, {
       redirect: "follow",
       method: "POST",
-      mode: "cors",
+      mode: "no-cors",
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
