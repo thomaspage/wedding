@@ -16,7 +16,7 @@ import SecretDinner from "./pages/SecretDinner";
 import Schedule from "./pages/Schedule";
 
 export const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx73-eMmJQmI9aG3J_r3CysORnnQOowHGwT2g4GIzjCXyN554JNgsBsYFS0wuS_mFuTlQ/exec";
+  "https://script.google.com/macros/s/AKfycbxgzAIEWC2Ijq3_ot56bgIWB7QEBh0mTY0xW1BLUbMtZS6WCm-F7tLbfQ0wYBoC5JLs9A/exec";
 
 export const theme = {
   typography: {
