@@ -1,6 +1,9 @@
 {
     "translation": {
         "pages": {
+            "registry": {
+                "path": "Registry"
+            },
             "home": {
                 "path": "Home",
                 "title.1": "Max & Tom",

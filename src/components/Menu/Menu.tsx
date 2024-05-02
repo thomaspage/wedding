@@ -67,6 +67,16 @@ const Menu = ({}) => {
       },
     },
     {
+      pathname: "/registry",
+      label: t("pages.registry.path"),
+      hearts: {
+        version: 1,
+        $height: 22,
+        $top: -2,
+        $left: -13,
+      },
+    },    
+    {
       pathname: "/rsvp",
       label: t("pages.rsvp.path"),
       hearts: {
