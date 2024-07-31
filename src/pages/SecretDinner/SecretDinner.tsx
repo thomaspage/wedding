@@ -181,7 +181,7 @@ const SecretDinner = ({}) => {
             {t("pages.secretDinner.title1")}<br />
             {t("pages.secretDinner.title2")}
           </Typography>
-          <Typography textAlign="center">
+          <Typography textAlign="center" whiteSpace="pre-wrap">
             {t("pages.secretDinner.description")}
           </Typography>
         </div>
