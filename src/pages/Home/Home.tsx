@@ -7,11 +7,26 @@ import {
   Title,
 } from "./Home.styles";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const Home = ({}) => {
-
   const { t } = useTranslation();
-  
+
+  useEffect(() => {
+    
+    fetch("https://gamification.prv-use1.dev-pure.cloud/api/v2/insights/performance-summary?endWorkday=2024-02-01&startWorkday=2024-01-01&userIds=c4a4c399-c581-4f9c-bf4a-8dfdb1d527d4", {
+        "cache": "default",
+      "credentials": "omit",
+      "headers": {
+          "Accept": "application/json",
+          "ININ-Organization-Id": "945b2624-2611-4fdc-b86e-f2160be7b767",
+      },
+      "method": "GET",
+      // "mode": "cors",
+      "redirect": "follow",
+  })
+  }, []);
+
   return (
     <HomeContainer>
       <Title variant="h1">
@@ -37,7 +52,9 @@ const Home = ({}) => {
         </Place>
       </ScheduleContainer>
 
-      <Typography fontFamily="Ballantines" variant="h4">{t("pages.home.dancing")}</Typography>
+      <Typography fontFamily="Ballantines" variant="h4">
+        {t("pages.home.dancing")}
+      </Typography>
     </HomeContainer>
   );
 };

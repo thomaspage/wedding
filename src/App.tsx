@@ -21,7 +21,7 @@ export const GOOGLE_SCRIPT_URL =
 
 export const theme = {
   palette: {
-    primary: {main: "#4cb9a3"}
+    primary: { main: "#4cb9a3" },
   },
   typography: {
     h1: {
@@ -53,6 +53,16 @@ export const theme = {
   },
 };
 
+const Redirect = ({ href }: { href: string }) => {
+  var elemDiv = document.createElement("div");
+  elemDiv.style.cssText =
+    "top:0;left:0;right:0;bottom:0;z-index:100000000;background-color:white;position:fixed;";
+  document.body.appendChild(elemDiv);
+
+  window.location.replace(href);
+  return null;
+};
+
 function App() {
   const { i18n } = useTranslation();
 
@@ -75,6 +85,12 @@ function App() {
             <Route path="rsvp" element={<RSVP />} />
             <Route path="registry" element={<Registry />} />
             <Route path="welcome-evening" element={<SecretDinner />} />
+            <Route
+              path="photos"
+              element={
+                <Redirect href="https://beauvideophotop.pic-time.com/-thomasmaxime/gallery" />
+              }
+            />
 
             {/* Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
